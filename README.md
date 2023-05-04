@@ -29,8 +29,8 @@
 - 他の方の投稿を検索したり、交流したい時
 
 ## 設計書
-- ER図【https://drive.google.com/file/d/1NhUoGPnXndfP_UVsyzhYYO_6Y-ZduUjI/view?usp=sharing】
-- テーブル定義書【】
+- ER図【 https://drive.google.com/file/d/1NhUoGPnXndfP_UVsyzhYYO_6Y-ZduUjI/view?usp=sharing 】
+- テーブル定義書【 https://docs.google.com/spreadsheets/d/1CDv3dTKgVZ6GAzApBiefs1rsgluwMTrsWVZ9uHyJy9E/edit?usp=sharing 】
 
 
 ## 開発環境
