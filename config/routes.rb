@@ -8,10 +8,37 @@ Rails.application.routes.draw do
   }
 
 
+  scope module: :public do
+    root :to => "homes#top"
+    get "about" => "homes#about"
+    resources :posts
+    resources :categories, except: [:destroy]
+
+
+    # end_users コントローラー
+    get "/end_users/my_page" => "end_users#show", as: "my_page"
+    get "/end_users/information/edit" => "end_users#edit"
+    patch "/end_users/information" => "end_users#update"
+    get "/end_users/unsubscribe" => "end_users#unsubscribe", as: "unsubscribe"
+    patch "/end_users/withdrawal" => "end_users#withdrawal", as: "withdrawal"
+
+
+  end
+
+
+
+
   # 管理者用
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
+
+
+  namespace :admin do
+    root :to => "homes#top"
+    resources :end_users, only: [:index, :show, :edit, :update]
+    # resources :comments, only: [:index, :show, :destroy]
+  end
 
 
 end
