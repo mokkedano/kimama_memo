@@ -18,6 +18,9 @@
         </li>
       <% elsif end_user_signed_in? %>
         <li>
+          <%= link_to "マイページ", my_page_path %>
+        </li>
+        <li>
           <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
         </li>
       <% else %>
@@ -30,6 +33,11 @@
       <% end %>
     </header>
 
-    <%= yield %>
+    <main>
+      <p><%= flash[:notice] %></p>
+      <%= yield %>
+    </main>
+
+
   </body>
 </html>

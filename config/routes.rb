@@ -11,9 +11,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root :to => "homes#top"
     get "about" => "homes#about"
-    resources :posts
     resources :categories, except: [:destroy]
-
 
     # end_users コントローラー
     get "/end_users/my_page" => "end_users#show", as: "my_page"
@@ -22,8 +20,12 @@ Rails.application.routes.draw do
     get "/end_users/unsubscribe" => "end_users#unsubscribe", as: "unsubscribe"
     patch "/end_users/withdrawal" => "end_users#withdrawal", as: "withdrawal"
 
+    # posts コントローラー
+    get "/posts/memo" => "posts#memo_index", as: "memo"
+    resources :posts
 
   end
+
 
 
 

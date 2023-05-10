@@ -1,0 +1,23 @@
+<% if params[:category_id] %>
+  <h2><%= @category.name %>のメモたち (全<%= @all_posts_count %>枚)</h2>
+<% else %>
+  <h2>したためたメモたち (全<%= @all_posts_count %>枚)</h2>
+<% end %>
+
+
+
+<% if @posts.exists %>
+
+    <% @posts.each do |post| %>
+        <%= link_to post_path(post) do %>
+          <%= image_tag post.get_image(100,100) %>
+    			<p><%= post.title %></p>
+    		<% end %>
+
+  		  <p><%= post.introduction %></p>
+  	<% end %>
+
+<% else %>
+	<h3>メモが 0 枚です。</h3>
+<% end %>
+

@@ -30,7 +30,7 @@ class Public::SessionsController < Devise::SessionsController
 
 
   def after_sign_in_path_for(resource)
-    mypage_path
+    my_page_path
   end
 
 
@@ -44,7 +44,7 @@ class Public::SessionsController < Devise::SessionsController
   def end_user_state
     @end_user = EndUser.find_by(email: params[:end_user][:email])
     if @end_user
-      if @end_user.valid_password?(params[:end_user][:password]) && !@end_user.is_deleted
+      if @end_user.valid_password?(params[:end_user][:password]) && (@end_user.active_for_authentication? == false)
         flash[:notice] = "退会済みのようです。申し訳ございませんが、別のメールアドレスを使い再度ご登録ください。"
         redirect_to new_end_user_registration_path
       end

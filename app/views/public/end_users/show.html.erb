@@ -1,7 +1,13 @@
 <h1>マイページ</h1>
 
-<h3>名前</h3>
-<%= 
+<h4>名前</h4>
+<%= @end_user.nickname %>
+
+<h4>画像</h4>
+<%= image_tag @end_user.get_profile_image(100,100) %>
+
+<h4>自己紹介</h4>
+<%= @end_user.self_introduction %>
 
 <%= link_to "メモを書く", new_post_path %>
 <%= link_to "カテゴリ管理", categories_path %>

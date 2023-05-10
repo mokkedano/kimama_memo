@@ -1,6 +1,9 @@
 <h1>新しいメモを書く</h1>
 
-<%= form_with model: @post, url: posts_path, method: :post do |f| %>
+<%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
+
+  <%= f.label :image, "画像" %>
+  <%= f.file_field :image, accept: "image/*" %>
 
   <%= f.label :title, "タイトル" %>
   <%= f.text_field :title %>
