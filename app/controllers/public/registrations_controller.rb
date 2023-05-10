@@ -69,6 +69,8 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
+
+  # 新規登録の際、nickname のデータを保存するためのメソッド
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
   end

@@ -1,0 +1,15 @@
+<h1>新しいメモを書く</h1>
+
+<%= form_with model: @post, url: posts_path, method: :post do |f| %>
+
+  <%= f.label :title, "タイトル" %>
+  <%= f.text_field :title %>
+
+  <%= f.label :introduction, "本文" %>
+  <%= f.text_area :introduction %>
+
+  <%= f.label :category_id, "カテゴリ" %>
+  <%= f.collection_select :category_id, Category.all, :id, :name, :include_blank => "選択してください" %>
+
+  <%= f.submit "メモ作成" %>
+<% end %>

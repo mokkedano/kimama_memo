@@ -1,0 +1,15 @@
+<h1>カテゴリ管理</h1>
+
+<%= form_with model: @category, url: categories_path, method: :post do |f| %>
+  <%= f.label :name, "カテゴリ名" %>
+  <%= f.text_field :name, placeholder: "カテゴリ名" %>
+  <%= f.submit "新規作成" %>
+<% end %>
+
+
+<h3>カテゴリ一覧</h3>
+
+<% @categories.each do |category| %>
+  <%= category.name %>
+  <%= link_to "編集", edit_category_path(category), class: "btn btn-success" %>
+<% end %>
