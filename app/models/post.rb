@@ -19,4 +19,16 @@ class Post < ApplicationRecord
     image.variant(resize_to_limit: [width, height]).processed
   end
 
+
+  # 検索方法の分岐に関する記述
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @post = Post.where("title LIKE? or introduction LIKE?", "#{word}")
+    elsif search == "partial_match"
+      @post = Post.where("title LIKE? or introduction LIKE?", "%#{word}%")
+    else
+      @post = Post.all
+    end
+  end
+
 end

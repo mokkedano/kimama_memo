@@ -1,0 +1,44 @@
+<h2>みんなのメモ</h2>
+
+
+<% if @range == "Post" %>
+  <h3><% params[:word] %>の検索結果 (全<%= @posts.count %>枚)</h3>
+<% else %>
+  <h3><% params[:word] %>の検索結果 (全<%= @categories.posts.count %>枚)</h3>
+<% end %>
+
+
+
+
+
+<!--検索対象が「メモ (Post)」の時 -->
+  <% if @range == "Post" %>
+
+      <% @posts.each do |post| %>
+
+        <%= link_to post_path(post) do %>
+          <%= image_tag post.get_image(100,100) %>
+    			<p><%= post.title %></p>
+    		<% end %>
+
+  		  <p><%= post.introduction %></p>
+  	<% end %>
+
+
+
+
+  <% else %>
+  <!--検索対象が「カテゴリ (Category)」の時 -->
+    <% @categories.each do |category| %>
+
+      <%= link_to post_path(category_id: category.id) do %>
+          <%= image_tag category.posts.get_image(100,100) %>
+    			<p><%= category.posts.title %></p>
+    		<% end %>
+
+  		  <p><%= category.posts.introduction %></p>
+  	<% end %>
+
+
+
+<% end %>

@@ -2,3 +2,8 @@
 <%= image_tag @post.get_image(100,100) %>
 <%= @post.title %>
 <%= @post.introduction %>
+
+<!--ステータスも表示させたい-->
+
+<%= link_to "メモを編集する", edit_post_path(@post), class: "btn btn-success" %>
+<%= link_to "メモを削除する", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>

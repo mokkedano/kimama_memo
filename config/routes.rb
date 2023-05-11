@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     # posts コントローラー
     get "/posts/memo" => "posts#memo_index", as: "memo"
     resources :posts
+    
+    # searchesコントローラー
+    get "search" => "searches#search"
 
   end
 
