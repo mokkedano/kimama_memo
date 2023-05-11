@@ -24,7 +24,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @categories = Category.all
-    if params([:category_id])
+    if params[:category_id]
       @category = @categories.find(params[:category_id])
       all_posts = @category.posts
     else
