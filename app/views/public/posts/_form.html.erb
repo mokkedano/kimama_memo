@@ -9,8 +9,21 @@
   <%= f.label :introduction, "本文" %>
   <%= f.text_area :introduction %>
 
-  <%= f.label :category_id, "カテゴリ" %>
-  <%= f.collection_select :category_id, Category.all, :id, :name, :include_blank => "選択してください" %>
+  <%#= f.label :category_id, "カテゴリ" %>
+  <%#= f.collection_select :category_id, Category.all, :id, :name, :include_blank => "選択してください" %>
+
+
+    <div class='form-group'>
+          <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>
+              <div class='form-check'>
+                  <%= category.label class: 'form-check-label' do %>
+                      <%= category.check_box class: 'form-check-input' %>
+                      <%= category.text %>
+                  <% end %>
+              </div>
+          <% end %>
+    </div>
+
 
   <%= f.submit submit, class: "btn btn-primary" %>
 <% end %>

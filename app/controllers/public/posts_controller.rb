@@ -62,8 +62,8 @@ class Public::PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path, notice: "メモを削除しました。"
   end
-  
-  
+
+
 
 
 
@@ -71,7 +71,7 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :introduction, :category_id, :image)
+    params.require(:post).permit(:title, :introduction, :image, category_ids: [])
   end
 
 end

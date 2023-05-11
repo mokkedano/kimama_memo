@@ -1,12 +1,18 @@
 <h2>みんなのメモ</h2>
 
+<%# if @range == "Post" %>
+  <h3><%# params[:word] %>の検索結果 (全<%#= @all_posts_count %>枚)</h3>
+<%# else %>
+  <h3><%# params[:word] %>の検索結果 (全<%#= @all_categories_posts_count %>枚)</h3>
+<%# end %>
 
-<% if @range == "Post" %>
-  <h3><% params[:word] %>の検索結果 (全<%= @posts.count %>枚)</h3>
-<% else %>
-  <h3><% params[:word] %>の検索結果 (全<%= @categories.posts.count %>枚)</h3>
+
+<%= form_with url: search_path, local: true, method: :get do |f| %>
+    <% Category.all.each do |category| %>
+        <li><%= check_box :category_ids, category.name %><%= category.name %></li>
+    <% end %>
+    <%= f.submit "検索" %>
 <% end %>
-
 
 
 
@@ -31,10 +37,10 @@
   <!--検索対象が「カテゴリ (Category)」の時 -->
     <% @categories.each do |category| %>
 
-      <%= link_to post_path(category_id: category.id) do %>
+      <%#= link_to post_path(category_id: category.id) do %>
           <%= image_tag category.posts.get_image(100,100) %>
     			<p><%= category.posts.title %></p>
-    		<% end %>
+    		<%# end %>
 
   		  <p><%= category.posts.introduction %></p>
   	<% end %>

@@ -3,6 +3,10 @@
 <%= @post.title %>
 <%= @post.introduction %>
 
+<% @post.categories.each do |category| %>
+  <span><%= category.name %></span>
+<% end %>
+
 <!--ステータスも表示させたい-->
 
 <%= link_to "メモを編集する", edit_post_path(@post), class: "btn btn-success" %>

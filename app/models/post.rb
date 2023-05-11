@@ -1,9 +1,15 @@
 class Post < ApplicationRecord
 
   belongs_to :end_user
-  belongs_to :category
+
+  #postsテーブルから中間テーブル(post_category_relations)に対する関連付け
+  has_many :post_category_relations, dependent: :destroy
+  #postsテーブルから中間テーブル(post_category_relations)を介してcategoriesテーブルへの関連付け
+  has_many :categories, through: :post_category_relations, dependent: :destroy
+
 
   has_one_attached :image
+
 
   validates :title, presence: true, length: { minimum: 1, maximum: 30 }
   validates :introduction, presence: true

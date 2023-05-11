@@ -11,3 +11,12 @@ Admin.create!(
   email: 'admin@admin',
   password: 'testadmin'
 )
+
+
+Category.create([
+  { name: 'カテゴリ1' },
+  { name: 'カテゴリ2' },
+  { name: 'カテゴリ3' },
+  { name: 'カテゴリ4' },
+  { name: 'カテゴリ5' }
+])

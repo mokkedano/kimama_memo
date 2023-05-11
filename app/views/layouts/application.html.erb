@@ -23,6 +23,9 @@
         <li>
           <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
         </li>
+        <li>
+          <%= render "public/searches/search" %>
+        </li>
       <% else %>
         <li>
           <%= link_to "新規登録", new_end_user_registration_path %>
