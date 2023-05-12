@@ -11,19 +11,10 @@
 
 
 <!--いいね機能-->
-<% if @post.favorited_by?(current_end_user) %>
-  <p>
-    <%= link_to post_favorites_path(@post), method: :delete do %>
-      ♥<%= @post.favorites.count %> いいね
-    <% end %>
-  </p>
-  <% else %>
-  <p>
-    <%= link_to post_favorites_path(@post), method: :post do %>
-      ♡<%= @post.favorites.count %> いいね
-    <% end %>
-  </p>
-<% end %>
+<div id="favorite_buttons_<%= @post.id %>">
+　<%= render "public/favorites/favorite", post: @post %>
+</div>
+
 <!--いいね機能 ここまで-->
 
 
