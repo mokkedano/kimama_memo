@@ -29,12 +29,13 @@ class Post < ApplicationRecord
   # 検索方法の分岐に関する記述
   def self.looks(search, word)
     if search == "perfect_match"
-      @post = Post.where("title LIKE? or introduction LIKE?", "#{word}")
+      @post = Post.where("title LIKE(?) or introduction LIKE(?)", "#{word}", "#{word}")
     elsif search == "partial_match"
-      @post = Post.where("title LIKE? or introduction LIKE?", "%#{word}%")
+      @post = Post.where("title LIKE(?) or introduction LIKE(?)", "%#{word}%", "%#{word}%")
     else
       @post = Post.all
     end
   end
 
 end
+

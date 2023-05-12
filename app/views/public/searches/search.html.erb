@@ -17,8 +17,8 @@
 
 
 
-<!--検索対象が「メモ (Post)」の時 -->
-  <% if @range == "Post" %>
+
+<!--カテゴリを検索フォームに入力しても検索結果が表示されない。-->
 
       <% @posts.each do |post| %>
 
@@ -28,23 +28,5 @@
     		<% end %>
 
   		  <p><%= post.introduction %></p>
-  	<% end %>
+  	  <% end %>
 
-
-
-
-  <% else %>
-  <!--検索対象が「カテゴリ (Category)」の時 -->
-    <% @categories.each do |category| %>
-
-      <%#= link_to post_path(category_id: category.id) do %>
-          <%= image_tag category.posts.get_image(100,100) %>
-    			<p><%= category.posts.title %></p>
-    		<%# end %>
-
-  		  <p><%= category.posts.introduction %></p>
-  	<% end %>
-
-
-
-<% end %>

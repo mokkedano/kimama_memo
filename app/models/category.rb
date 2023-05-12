@@ -21,4 +21,16 @@ class Category < ApplicationRecord
     end
   end
 
+
+  # # 検索方法の分岐に関する記述
+  # def self.looks(search, word)
+  #   if search == "perfect_match"
+  #     @post = Category.where("name LIKE?", "#{word}")
+  #   elsif search == "partial_match"
+  #     @post = Category.where("name LIKE?", "%#{word}%")
+  #   else
+  #     @post = Category.all
+  #   end
+  # end
+
 end
