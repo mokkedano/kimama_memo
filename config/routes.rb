@@ -22,8 +22,10 @@ Rails.application.routes.draw do
 
     # posts コントローラー
     get "/posts/memo" => "posts#memo_index", as: "memo"
-    resources :posts
-    
+    resources :posts do
+      resource :favorites, only: [:create, :destroy, :index]
+    end
+
     # searchesコントローラー
     get "search" => "searches#search"
 

@@ -6,8 +6,11 @@ class EndUser < ApplicationRecord
 
 
   has_many :posts, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+
 
   has_one_attached :profile_image
+
 
   validates :nickname, presence: true, length: { minimum: 1, maximum: 20 }
   validates :self_introduction, length: { maximum: 50 }
@@ -25,6 +28,7 @@ class EndUser < ApplicationRecord
   end
 
 
+  # ユーザーの退会確認に関するメソッド
   def active_for_authentication?
     super && (is_deleted == false)
   end

@@ -1,10 +1,12 @@
 class Post < ApplicationRecord
 
   belongs_to :end_user
+  has_many :favorites, dependent: :destroy
 
-  #postsテーブルから中間テーブル(post_category_relations)に対する関連付け
+  # categoriesモデルとのアソシエーション
+  # postsテーブルから中間テーブル(post_category_relations)に対する関連付け
   has_many :post_category_relations, dependent: :destroy
-  #postsテーブルから中間テーブル(post_category_relations)を介してcategoriesテーブルへの関連付け
+  # postsテーブルから中間テーブル(post_category_relations)を介してcategoriesテーブルへの関連付け
   has_many :categories, through: :post_category_relations, dependent: :destroy
 
 
@@ -35,6 +37,12 @@ class Post < ApplicationRecord
     else
       @post = Post.all
     end
+  end
+  
+  
+  # いいね機能に関するメソッド
+  def favorited_by?(end_user)
+    favorites.exists?(end_user_id: end_user.id)
   end
 
 end

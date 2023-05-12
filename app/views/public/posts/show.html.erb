@@ -9,5 +9,20 @@
 
 <!--ステータスも表示させたい-->
 
+<% if @post.favorited_by?(current_end_user) %>
+  <p>
+    <%= link_to post_favorites_path(@post), method: :delete do %>
+      ♥<%= @post.favorites.count %> いいね
+    <% end %>
+  </p>
+  <% else %>
+  <p>
+    <%= link_to post_favorites_path(@post), method: :post do %>
+      ♡<%= @post.favorites.count %> いいね
+    <% end %>
+  </p>
+<% end %>
+
+
 <%= link_to "メモを編集する", edit_post_path(@post), class: "btn btn-success" %>
 <%= link_to "メモを削除する", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>
