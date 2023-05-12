@@ -28,5 +28,6 @@
     		<% end %>
 
   		  <p><%= post.introduction %></p>
+  		  <p><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></p>
   	  <% end %>
 

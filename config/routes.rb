@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get "/posts/memo" => "posts#memo_index", as: "memo"
     resources :posts do
       resource :favorites, only: [:create, :destroy, :index]
+      resources :comments, only: [:create, :destroy, :index]
     end
 
     # searchesコントローラー
