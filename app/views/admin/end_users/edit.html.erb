@@ -1,0 +1,49 @@
+<h2><%= @end_user.nickname %>さんの会員情報編集ページ</h2>
+
+<%= form_with model: @end_user, url: admin_end_user_path(@end_user), local: true, method: :patch do |f| %>
+<table class="table">
+	<!--<thead>-->
+	<!--	<th></th>-->
+	<!--	<th></th>-->
+	<!--	<th></th>-->
+	<!--</thead>-->
+	<tbody>
+		<tr>
+			<td>会員ID</td>
+			<td><%= @end_user.id %></td>
+		</tr>
+		<tr>
+			<td>プロフィール画像</td>
+			<td colspan="2"><%= f.file_field :profile_image, class: "form-control-file" %></td>
+		</tr>
+		<tr>
+			<td>ニックネーム</td>
+			<td colspan="2"><%= f.text_field :nickname, class: "form-control", autofocus: true, id: "end_user_name", placeholder: "#{@end_user.nickname}" %></td>
+		</tr>
+		<tr>
+			<td>自己紹介</td>
+			<td colspan="2"><%= f.text_area :self_introduction, class: "form-control", id: "end_user_introduction", placeholder: "#{@end_user.self_introduction}" %></td>
+		</tr>
+		<tr>
+			<td>メールアドレス</td>
+			<td colspan="2"><%= f.email_field :email, class: "form-control", id: "end_user_email", placeholder: "#{@end_user.email}" %></td>
+		</tr>
+		<tr>
+			<td>会員ステータス</td>
+			<td><%= f.radio_button :is_deleted, false %><%= f.label :is_deleted, "有効", class: "text-active" %></td>
+			<td><%= f.radio_button :is_deleted, true %><%= f.label :is_deleted, "退会済み", class: "text-invalid" %></td>
+		</tr>
+		<tr>
+		  <td colspan="3">
+		    <%= f.submit "保存", class: "btn btn-secondary" %>
+		  </td>
+		</tr>
+	</tbody>
+</table>
+<% end %>
+
+
+
+<div>
+  <%= link_to "戻る", admin_end_user_path(@end_user), class: "btn btn-success" %>
+</div>
