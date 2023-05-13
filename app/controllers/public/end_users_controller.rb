@@ -7,6 +7,21 @@ class Public::EndUsersController < ApplicationController
   end
 
 
+  def edit
+    @end_user = current_end_user
+  end
+
+
+  def update
+    @end_user = current_end_user
+    if @end_user.update(end_user_params)
+      redirect_to my_page_path
+    else
+      render :edit
+    end
+  end
+
+
   def unsubscribe
   end
 
