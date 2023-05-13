@@ -7,7 +7,6 @@ class Public::CommentsController < ApplicationController
     comment.post_id = @post.id
     comment.save
     @comment = Comment.new
-    # redirect_to post_path(post)
   end
 
 
@@ -16,7 +15,6 @@ class Public::CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
     @comment = Comment.new
-    # redirect_to post_path(params[:post_id])
   end
 
 
@@ -25,9 +23,11 @@ class Public::CommentsController < ApplicationController
 
 
 
+
   private
   def comment_params
     params.require(:comment).permit(:comment)
   end
+
 
 end

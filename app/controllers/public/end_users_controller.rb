@@ -15,7 +15,7 @@ class Public::EndUsersController < ApplicationController
   def update
     @end_user = current_end_user
     if @end_user.update(end_user_params)
-      redirect_to my_page_path
+      redirect_to my_page_path, notice: "プロフィールを更新しました！"
     else
       render :edit
     end
@@ -27,10 +27,10 @@ class Public::EndUsersController < ApplicationController
 
 
   def withdrawal
-    @end_user = EndUser.find(params[:id])
+    @end_user = current_end_user
     @end_user.update(is_deleted: true)
     reset_session
-    flash[:notice] = "退会処理を実行いたしました"
+    flash[:notice] = "退会処理を実行いたしました。"
     redirect_to root_path
   end
 

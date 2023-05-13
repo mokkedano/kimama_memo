@@ -46,8 +46,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root :to => "homes#top"
-    resources :end_users, only: [:index, :show, :edit, :update]
-    # resources :comments, only: [:index, :show, :destroy]
+    resources :end_users, only: [:index, :show, :edit, :update] do
+      resources :comments, only: [:index, :show, :destroy]
+    end
   end
 
 

@@ -10,8 +10,11 @@
 <%= @end_user.self_introduction %>
 
 
-<%= link_to "プロフィール編集", end_users_information_edit_path %>
-<%= link_to "メモを書く", new_post_path %>
-<%= link_to "メモ一覧", memo_path %>
-<%= link_to "カテゴリ管理", categories_path %>
-<%= link_to "いいねしたメモたち", favorite_index_path %>
+<div>
+  <%= link_to "プロフィール編集", end_users_information_edit_path %>
+  <%= link_to "メモを書く", new_post_path %>
+  <%= link_to "メモ一覧", memo_path %>
+  <%= link_to "カテゴリ管理", categories_path %>
+  <%= link_to "いいねしたメモたち", favorite_index_path %>
+  <%= link_to "退会する", unsubscribe_path %>
+</div>
