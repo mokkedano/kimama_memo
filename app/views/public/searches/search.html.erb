@@ -28,6 +28,13 @@
     		<% end %>
 
   		  <p><%= post.introduction %></p>
+
+  		  <!--いいね機能-->
+		    <div id="favorite_buttons_<%= post.id %>">
+  		    <%= render "public/favorites/favorite", post: post %>
+		    </div>
+		    <!--いいね機能 ここまで-->
+
   		  <p><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></p>
   	  <% end %>
 

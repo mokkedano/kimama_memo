@@ -1,4 +1,5 @@
 class Public::EndUsersController < ApplicationController
+  # before_action :set_end_user, only: [:favorites]
 
 
   def show
@@ -19,11 +20,25 @@ class Public::EndUsersController < ApplicationController
   end
 
 
+  def favorites
+    @end_user = current_end_user
+    favorites = Favorite.where(end_user_id: @end_user.id).pluck(:post_id)
+    @favorite_posts = Post.find(favorites)
+    # @post = Post.find(params[:id])
+  end
+
+
+
 
 
   private
   def end_user_params
     params.require(:end_user).permit(:nickname, :self_introduction, :profile_image)
   end
+
+
+  # def set_end_user
+  #   @end_user = EndUser.find(params[:id])
+  # end
 
 end
