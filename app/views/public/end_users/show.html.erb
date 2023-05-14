@@ -18,5 +18,7 @@
   <%= link_to "メモ一覧", memo_path %>
   <%= link_to "カテゴリ管理", categories_path %>
   <%= link_to "いいねしたメモたち", favorite_index_path %>
-  <%= link_to "退会する", unsubscribe_path %>
+  <% if @end_user.nickname != "guest_end_user" %>
+    <%= link_to "退会する", unsubscribe_path %>
+  <% end %>
 </div>
