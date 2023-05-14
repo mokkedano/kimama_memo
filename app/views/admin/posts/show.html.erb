@@ -1,0 +1,33 @@
+<h2>メモの中身</h2>
+<%= image_tag @post.get_image(100,100) %>
+<%= @post.title %>
+<%= @post.introduction %>
+
+<% @post.categories.each do |category| %>
+  <span><%= category.name %></span>
+<% end %>
+
+<!--ステータスも表示させたい-->
+
+<%= @post.created_at.strftime("%Y/%m/%d %T") %>
+
+<!--いいね-->
+  <p>♥<%= @post.favorites.count %></p>
+
+
+
+
+
+<!--コメント数 -->
+<div id="comment_count_<%= @post.id %>">
+  <%= render "public/comments/comment_count", post: @post %>
+</div>
+<!--コメント送信フォーム・コメント一覧-->
+<div id="comment_area_<%= @post.id %>">
+  <%= render partial: "public/comments/comment", locals: { post: @post, comment: @comment } %>
+</div>
+<!--コメント機能 ここまで-->
+
+
+<%#= link_to "メモを編集する", edit_admin_post_path(@post), class: "btn btn-success" %>
+<%= link_to "メモを削除する", admin_post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>

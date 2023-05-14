@@ -16,9 +16,8 @@ class Admin::EndUsersController < ApplicationController
 
 
   def update
-    # binding.pry
     if @end_user.update(end_user_params)
-      redirect_to admin_end_user_path(@end_user)
+      redirect_to admin_end_user_path(@end_user), notice: "会員プロフィールを更新しました！"
     else
       render :edit
     end

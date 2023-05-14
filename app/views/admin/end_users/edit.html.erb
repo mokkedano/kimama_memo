@@ -14,19 +14,27 @@
 		</tr>
 		<tr>
 			<td>プロフィール画像</td>
-			<td colspan="2"><%= f.file_field :profile_image, class: "form-control-file" %></td>
+			<td colspan="2">
+			  <%= f.file_field :profile_image, class: "form-control-file" %>
+			</td>
 		</tr>
 		<tr>
 			<td>ニックネーム</td>
-			<td colspan="2"><%= f.text_field :nickname, class: "form-control", autofocus: true, id: "end_user_name", placeholder: "#{@end_user.nickname}" %></td>
+			<td colspan="2">
+			  <%= f.text_field :nickname, class: "form-control", autofocus: true, id: "end_user_name", placeholder: "#{@end_user.nickname}" %>
+			</td>
 		</tr>
 		<tr>
 			<td>自己紹介</td>
-			<td colspan="2"><%= f.text_area :self_introduction, class: "form-control", id: "end_user_introduction", placeholder: "#{@end_user.self_introduction}" %></td>
+			<td colspan="2">
+			  <%= f.text_area :self_introduction, class: "form-control", id: "end_user_introduction", placeholder: "#{@end_user.self_introduction}" %>
+			</td>
 		</tr>
 		<tr>
 			<td>メールアドレス</td>
-			<td colspan="2"><%= f.email_field :email, class: "form-control", id: "end_user_email", placeholder: "#{@end_user.email}" %></td>
+			<td colspan="2">
+			  <%= f.email_field :email, class: "form-control", id: "end_user_email", placeholder: "#{@end_user.email}" %>
+			</td>
 		</tr>
 		<tr>
 			<td>会員ステータス</td>
