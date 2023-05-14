@@ -1,28 +1,20 @@
-<h2>会員コメント一覧</h2>
+<h2>コメント一覧</h2>
 
 <table class="table">
 	<thead>
-		<th>会員ID</th>
-		<th>画像</th>
-		<th>ニックネーム</th>
-		<th>コメント</th>
+		<th>コメントしたメモ</th>
+		<th></th>
+		<th>コメント本文</th>
+		<th>コメント日時</th>
 		<th></th>
 	</thead>
 
 	<tbody>
-    <% @end_users.comments.each do |comment| %>
-      <tr>
-        <td><%= comment.end_user.id %></td>
-        <td><%= image_tag comment.end_user.get_profile_image(100,100) %></td>
-        <td><%= comment.end_user.nickname %></td>
-        <td><%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %></td>
-        <td>
-          <%= link_to "削除", admin_end_user_comment_path(comment.post, comment), method: :delete, local: true,
-                                                    "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>
-        </td>
-      </tr>
-    <% end %>
+	  <div id="comment_index_<%= @end_user.id %>">
+      <%= render "comments", end_user: @end_user %>
+    </div>
 	</tbody>
 </table>
+
 
 

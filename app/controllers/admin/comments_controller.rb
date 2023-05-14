@@ -2,7 +2,8 @@ class Admin::CommentsController < ApplicationController
 
 
   def index
-    @end_users = EndUser.all
+    @end_user = EndUser.find(params[:end_user_id])
+
   end
 
 
@@ -13,8 +14,4 @@ class Admin::CommentsController < ApplicationController
   end
 
 
-  private
-  # def comment_params
-  #   params.require(:comment).permit(:comment)
-  # end
 end

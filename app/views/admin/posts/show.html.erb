@@ -13,9 +13,6 @@
 <p>♥<%= @post.favorites.count %></p>
 
 
-
-
-
 <!--コメント数 -->
 <div id="comment_count_<%= @post.id %>">
   <%= render "public/comments/comment_count", post: @post %>
@@ -29,3 +26,4 @@
 
 <%#= link_to "メモを編集する", edit_admin_post_path(@post), class: "btn btn-success" %>
 <%= link_to "メモを削除する", admin_post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>
+<%= link_to "メモ一覧へ戻る", admin_posts_path, class: "btn btn-success" %>

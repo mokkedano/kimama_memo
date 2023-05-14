@@ -48,7 +48,7 @@ Rails.application.routes.draw do
     root :to => "homes#top"
     resources :posts, only: [:index, :show, :edit, :update, :destroy]
     resources :end_users, only: [:index, :show, :edit, :update] do
-      resources :comments, only: [:index, :show, :destroy]
+      resources :comments, only: [:index, :destroy]
     end
   end
 
