@@ -33,4 +33,15 @@ class EndUser < ApplicationRecord
   def active_for_authentication?
     super && (is_deleted == false)
   end
+
+
+  # ゲストユーザーログインに関するメソッド
+  def self.guest
+    find_or_create_by!(nickname: 'guest_end_user' ,email: 'guest@example.com') do |end_user|
+      end_user.password = SecureRandom.urlsafe_base64
+      end_user.nickname = "guest_end_user"
+    end
+  end
+
+
 end

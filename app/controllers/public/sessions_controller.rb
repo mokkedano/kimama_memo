@@ -39,7 +39,6 @@ class Public::SessionsController < Devise::SessionsController
   end
 
 
-
   # 退会している会員かどうかを判断するためのメソッド
   def end_user_state
     @end_user = EndUser.find_by(email: params[:end_user][:email])
@@ -50,5 +49,6 @@ class Public::SessionsController < Devise::SessionsController
       end
     end
   end
+
 
 end

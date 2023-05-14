@@ -1,5 +1,6 @@
 class Public::EndUsersController < ApplicationController
   # before_action :set_end_user, only: [:favorites]
+  before_action :ensure_guest_end_user, only: [:edit]
 
 
   def show
@@ -55,5 +56,13 @@ class Public::EndUsersController < ApplicationController
   # def set_end_user
   #   @end_user = EndUser.find(params[:id])
   # end
+
+
+  def ensure_guest_end_user
+    @end_user = EndUser.find(params[:id])
+    if @end_user.nickname == "guest_end_user"
+      redirect_to my_page_path(current_end_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    end
+  end
 
 end
