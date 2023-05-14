@@ -7,11 +7,10 @@
       <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true,
                                       "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>
     <% end %>
+    <% if admin_signed_in? %>
+         <%= link_to "管理者削除", admin_end_user_comment_path(comment.post, comment), method: :delete,
+                          remote: true, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>
+    <% end %>
   <% end %>
 </div>
-<div>
-  <%= form_with model: [post, comment], local: false do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに入力してください" %>
-    <%= f.submit "送信する" %>
-  <% end %>
-</div>
+

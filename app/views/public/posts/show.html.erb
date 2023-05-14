@@ -22,9 +22,13 @@
 <div id="comment_count_<%= @post.id %>">
   <%= render "public/comments/comment_count", post: @post %>
 </div>
-<!--コメント送信フォーム・コメント一覧-->
+<!--コメント一覧-->
 <div id="comment_area_<%= @post.id %>">
-  <%= render partial: "public/comments/comment", locals: { post: @post, comment: @comment } %>
+  <%= render "public/comments/comment", post: @post %>
+</div>
+<!--コメント送信フォーム-->
+<div id="comment_form">
+  <%= render partial: "public/comments/comment_form", locals: { post: @post, comment: @comment } %>
 </div>
 <!--コメント機能 ここまで-->
 

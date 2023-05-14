@@ -26,7 +26,8 @@
         </td>
         <td><%= post.introduction %></td>
 				<td>♥<%= post.favorites.count %></td>
-				<td><%#= link_to "#{post.comments.count} コメント", admin_end_user_comment_path(end_user_id: end_user.id) %></td>
+				<!--コメント数 -->
+				<td><%= link_to "#{post.comments.count} コメント", admin_end_user_comments_path(post) %></td>
        	<td><%= post.created_at.strftime("%Y/%m/%d %T") %></td>
 			</tr>
 		<% end %>

@@ -46,9 +46,6 @@ class Post < ApplicationRecord
     favorites.exists?(end_user_id: end_user.id)
   end
 
-  # def favorited_by?(admin)
-  #   favorites.exists?(admin)
-  # end
 
 end
 

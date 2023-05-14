@@ -1,4 +1,4 @@
-<h2>メモの中身</h2>
+<h2>メモ詳細・管理画面</h2>
 <%= image_tag @post.get_image(100,100) %>
 <%= @post.title %>
 <%= @post.introduction %>
@@ -10,9 +10,7 @@
 <!--ステータスも表示させたい-->
 
 <%= @post.created_at.strftime("%Y/%m/%d %T") %>
-
-<!--いいね-->
-  <p>♥<%= @post.favorites.count %></p>
+<p>♥<%= @post.favorites.count %></p>
 
 
 
@@ -22,9 +20,9 @@
 <div id="comment_count_<%= @post.id %>">
   <%= render "public/comments/comment_count", post: @post %>
 </div>
-<!--コメント送信フォーム・コメント一覧-->
+<!--コメント一覧-->
 <div id="comment_area_<%= @post.id %>">
-  <%= render partial: "public/comments/comment", locals: { post: @post, comment: @comment } %>
+  <%= render "public/comments/comment", post: @post %>
 </div>
 <!--コメント機能 ここまで-->
 
