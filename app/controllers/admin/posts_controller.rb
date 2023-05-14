@@ -1,4 +1,5 @@
 class Admin::PostsController < ApplicationController
+  before_action :set_post, only: [:show, :destroy]
 
 
   def index
@@ -7,11 +8,21 @@ class Admin::PostsController < ApplicationController
 
 
   def show
-    @post = Post.find(params[:id])
-    @comment = Comment.new
   end
-  
-  
+
+
   def destroy
+    if @post.destroy
+      redirect_to admin_posts_path, notice: "会員メモを管理者権限で削除しました。"
+    else
+      render :show
+    end
+  end
+
+
+
+  private
+  def set_post
+    @post = Post.find(params[:id])
   end
 end
