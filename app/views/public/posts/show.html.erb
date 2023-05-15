@@ -4,7 +4,7 @@
 <%= @post.introduction %>
 
 
-<% @post_categories.each do |category| %>
+<% @categories.each do |category| %>
   <%#= link_to category.name posts_search_category_path(category_id: category.posts.id) %>
   <%= category.name %>
   <%= "(#{category.posts.count})" %>
@@ -39,6 +39,7 @@
 </div>
 <!--コメント機能 ここまで-->
 
-
-<%= link_to "メモを編集する", edit_post_path(@post), class: "btn btn-success" %>
-<%= link_to "メモを削除する", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>
+<% if @post.end_user == current_end_user %>
+  <%= link_to "メモを編集する", edit_post_path(@post), class: "btn btn-success" %>
+  <%= link_to "メモを削除する", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>
+<% end %>

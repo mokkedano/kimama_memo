@@ -1,10 +1,11 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_end_user!
+  before_action :is_matching_login_end_user, only: [:edit, :update, :destroy]
 
 
   def new
     @post = Post.new
-    @categories = Category.all
+    @categories = current_end_user.categories
   end
 
 
@@ -21,16 +22,11 @@ class Public::PostsController < ApplicationController
   end
 
 
-  # def memo_index
-  #   # @categories = Category.all
-  #   @category_list = Category.all
-  # end
-
-
   def index
     # @posts = Post.page(params[:page]).per(10)
     @posts = current_end_user.posts
-    @category_list = Category.all
+    @categories = current_end_user.categories
+
     # @categories = Category.all
     # if params[:category_id]
     #   @category = @categories.find(params[:category_id])
@@ -48,14 +44,14 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
-    @post_categories = @post.categories
+    @categories = @post.categories
   end
 
 
   def edit
     @post = Post.find(params[:id])
     @category_list = @post.categories.pluck(:name).join(',')
-    @categories = Category.all
+    @categories = current_end_user.categories
   end
 
 
@@ -83,8 +79,8 @@ class Public::PostsController < ApplicationController
 
 
   def search_category
-    @category_list = Category.all
-    @category = Category.find(params[:category_id])
+    @categories = current_end_user.categories
+    @category = @categories.find(params[:category_id])
     # @posts = @category.posts.page(params[:page]).per(10)
     @posts = @category.posts
   end
@@ -96,6 +92,14 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :introduction, :image)
     # params.require(:post).permit(:title, :introduction, :image, category_ids: [])
+  end
+
+
+  def is_matchig_login_end_user
+    post = Post.find(params[:id])
+    unless post.end_user.id == current_end_user.id
+      redirect_to root_path
+    end
   end
 
 

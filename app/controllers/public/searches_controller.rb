@@ -23,8 +23,8 @@ class Public::SearchesController < ApplicationController
 
     # キーワード検索とカテゴリ検索を両立させたくて記述したコード
     @posts= Post.all
-    # @categories = Category.all      
-    @categories = Category.all
+    # @categories = Category.all
+    @categories = current_end_user.categories
     @posts = @posts.where("title LIKE(?) or introduction LIKE(?)", "%#{params[:word]}%","%#{params[:word]}%") if params[:word].present?
     #もしカテゴリ検索したら、post_idsにカテゴリを持ったidをまとめてそのidで検索
     if params[:category_ids].present?
