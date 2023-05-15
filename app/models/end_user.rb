@@ -9,6 +9,12 @@ class EndUser < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  # categoryモデルとのアソシエーション
+  # end_usersテーブルから中間テーブル(post_category_relations)に対する関連付け
+  has_many :post_category_relations, dependent: :destroy
+  # end_usersテーブルから中間テーブル(post_category_relations)を介してcategoriesテーブルへの関連付け
+  has_many :categories, through: :post_category_relations
+
 
   has_one_attached :profile_image
 

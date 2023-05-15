@@ -1,8 +1,10 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_end_user!
 
 
   def new
     @post = Post.new
+    @categories = Category.all
   end
 
 
@@ -19,15 +21,15 @@ class Public::PostsController < ApplicationController
   end
 
 
-  def memo_index
-    # @categories = Category.all
-    @category_list = Category.all
-  end
+  # def memo_index
+  #   # @categories = Category.all
+  #   @category_list = Category.all
+  # end
 
 
   def index
     # @posts = Post.page(params[:page]).per(10)
-    @posts = Post.all
+    @posts = current_end_user.posts
     @category_list = Category.all
     # @categories = Category.all
     # if params[:category_id]
@@ -53,6 +55,7 @@ class Public::PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     @category_list = @post.categories.pluck(:name).join(',')
+    @categories = Category.all
   end
 
 
@@ -83,7 +86,7 @@ class Public::PostsController < ApplicationController
     @category_list = Category.all
     @category = Category.find(params[:category_id])
     # @posts = @category.posts.page(params[:page]).per(10)
-    @posts = @category.posts.all
+    @posts = @category.posts
   end
 
 

@@ -1,20 +1,22 @@
 class Public::CategoriesController < ApplicationController
+  before_action :authenticate_end_user!
+  # before_action :is_matching_login_end_user, only: [:edit, :update]
 
 
   def index
     @category = Category.new
-    @categories = Category.all
+    @categories = current_end_user.categories
   end
 
 
   def create
-    @category = Category.new(category_params)
-    if @category.save
-      redirect_to categories_path
-    else
-      @categories = Category.all
-      render :index
-    end
+    # @category = Category.new(category_params)
+    # if @category.save
+    #   redirect_to categories_path
+    # else
+    #   @categories = current_end_user.categories
+    #   render :index
+    # end
   end
 
 
@@ -40,5 +42,13 @@ class Public::CategoriesController < ApplicationController
   def category_params
     params.require(:category).permit(:name)
   end
+
+
+  # def is_matching_login_end_user
+  #   category = Category.find(params[:id])
+  #   unless end_user.id == current_end_user.id
+  #     redirect_to root_path
+  #   end
+  # end
 
 end

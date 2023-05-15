@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     get "/end_users/favorites" => "end_users#favorites", as: "favorite_index"
 
     # posts コントローラー
-    get "/posts/memo" => "posts#memo_index", as: "memo"
+    # get "/posts/memo" => "posts#memo_index", as: "memo"
     get "posts/search_category"=>"posts#search_category"
     resources :posts do
       resources :comments, only: [:create, :destroy]

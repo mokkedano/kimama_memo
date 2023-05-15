@@ -1,3 +1,8 @@
 <h1>新しいメモを書く</h1>
 
 <%= render "form", post: @post, url: posts_path, submit: "メモ作成" %>
+
+<% @categories.each do |category|%>
+  <%= category.name %>
+  <%= "(#{category.posts.count})" %>
+<% end %>

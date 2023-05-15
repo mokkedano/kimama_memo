@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  # categoriesモデルとのアソシエーション
+  # categoryモデルとのアソシエーション
   # postsテーブルから中間テーブル(post_category_relations)に対する関連付け
   has_many :post_category_relations, dependent: :destroy
   # postsテーブルから中間テーブル(post_category_relations)を介してcategoriesテーブルへの関連付け
@@ -64,7 +64,7 @@ class Post < ApplicationRecord
     # 新しいカテゴリを保存
     new_categories.each do |new|
       new_post_category = Category.find_or_create_by(name: new)
-      post_categories.new(end_user_id: end_user_id, category_id: new_post_category.id).save
+      post_category_relations.new(end_user_id: end_user_id, category_id: new_post_category.id).save
     end
   end
 
