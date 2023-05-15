@@ -22,3 +22,22 @@
     <%= link_to "退会する", unsubscribe_path %>
   <% end %>
 </div>
+
+
+<div id="tag_box">
+  <p style="font-size:15px;"><i class="fas fa-tags">最近メモを作成したカテゴリ</i></p>
+    <% if @posts_category.present?%>
+      <!--last_tagという箱を作成-->
+      <% last_category = nil %>
+      <% @posts_category.each do |category| %>
+      <!--タグが被ってなければ、名前表示　タグ被ってたら何もせず-->
+        <%  if category != last_category %>
+          <span style="font-size:15px; margin:2px;"><%= link_to category.name, posts_search_category_path(category_id: category.id), class: "btn btn-sm btn-outline-primary"%></span>
+        <% end %>
+      <!--今取り出したタグをlast_tagに入れる-->
+        <%  last_category = category %>
+      <% end %>
+    <% else %>
+      <p>メモがありません。</p>
+    <% end %>
+</div>

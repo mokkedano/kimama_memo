@@ -8,7 +8,8 @@
 
 
 <%= form_with url: search_path, local: true, method: :get do |f| %>
-    <% Category.all.each do |category| %>
+    <%# Category.all.each do |category| %>
+    <% @categories.each do |category| %>
         <li><%= check_box :category_ids, category.name %><%= category.name %></li>
     <% end %>
     <%= f.submit "検索" %>

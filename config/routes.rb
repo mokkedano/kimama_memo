@@ -23,11 +23,11 @@ Rails.application.routes.draw do
     patch "/end_users/information" => "end_users#update"
     get "/end_users/unsubscribe" => "end_users#unsubscribe", as: "unsubscribe"
     patch "/end_users/withdrawal" => "end_users#withdrawal", as: "withdrawal"
-    # get "/end_users/:id/favorites" => "end_users#favorites", as: "favorite_index"
     get "/end_users/favorites" => "end_users#favorites", as: "favorite_index"
 
     # posts コントローラー
     get "/posts/memo" => "posts#memo_index", as: "memo"
+    get "posts/search_category"=>"posts#search_category"
     resources :posts do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
