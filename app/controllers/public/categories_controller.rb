@@ -1,6 +1,5 @@
 class Public::CategoriesController < ApplicationController
   before_action :authenticate_end_user!
-  # before_action :is_matching_login_end_user, only: [:edit, :update]
 
 
   def index
@@ -37,18 +36,10 @@ class Public::CategoriesController < ApplicationController
 
 
 
-
   private
   def category_params
     params.require(:category).permit(:name)
   end
 
-
-  # def is_matching_login_end_user
-  #   category = Category.find(params[:id])
-  #   unless end_user.id == current_end_user.id
-  #     redirect_to root_path
-  #   end
-  # end
 
 end

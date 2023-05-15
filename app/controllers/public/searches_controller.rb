@@ -7,23 +7,12 @@ class Public::SearchesController < ApplicationController
     @range = params[:range]
     if @range == "Post"
       @posts = Post.looks(params[:search], params[:word])
-      # search_posts = @posts★
     else
-      # @categories = Category.looks(params[:search], params[:word])
       @posts = Category.looks(params[:search], params[:word])
-      # @posts = @categories
-      # search_category_posts = @categories.post.id★
     end
-    # @all_posts_count = search_posts.count★
-    # @all_categories_posts_count = search_category_posts.count★
-    # ★コメントアウトにしている部分は、検索件数を出そうとした記述。エラーになったため、一旦おいとく。
-
-
-
 
     # キーワード検索とカテゴリ検索を両立させたくて記述したコード
     @posts= Post.all
-    # @categories = Category.all
     @categories = current_end_user.categories
     @posts = @posts.where("title LIKE(?) or introduction LIKE(?)", "%#{params[:word]}%","%#{params[:word]}%") if params[:word].present?
     #もしカテゴリ検索したら、post_idsにカテゴリを持ったidをまとめてそのidで検索
@@ -40,6 +29,7 @@ class Public::SearchesController < ApplicationController
       #キーワードとカテゴリのAND検索
       @posts = @posts.where(id: post_ids) if post_ids.present?
     end
+     @all_posts_count = @posts.count
   end
 
 
@@ -57,3 +47,6 @@ end
   #     end
   #   end
   # end
+
+
+

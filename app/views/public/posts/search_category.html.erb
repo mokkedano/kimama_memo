@@ -8,10 +8,12 @@
 <h5><%= @category.name%>のメモたち</h5>
 
 
-<% if @posts.exists? %>
 
-  <div class= "card">
-    <div class= "card-body">
+<div class= "card">
+  <div class= "card-body">
+
+  <% if @posts.exists? %>
+
 
 
     <% @posts.each do |post| %>
@@ -37,9 +39,9 @@
   		  <p><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></p>
   	<% end %>
 
-<% else %>
-	<h3>メモが 0 枚です。</h3>
-<% end %>
+  <% else %>
+  	<h3>メモが 0 枚です。</h3>
+  <% end %>
 
-</div>
+  </div>
 </div>
