@@ -60,7 +60,8 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :edit, :update, :destroy]
     resources :end_users, only: [:index, :show, :edit, :update] do
       get "posts" => "end_users#posts"
-      resources :comments, only: [:index, :destroy]
+      resources :comments, only: [:index, :destroy] 
+        # get "comment_all" => "comment#comment_all"
     end
   end
 

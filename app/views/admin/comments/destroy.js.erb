@@ -3,3 +3,5 @@ $('#comment_count_<%= @post.id %>').html("<%= j(render "public/comments/comment_
 $('#comment_area_<%= @post.id %>').html("<%= j(render "public/comments/comment", post: @post) %>");
 
 $('#comment_index_<%= @end_user.id %>').html("<%= j(render "comments", end_user: @end_user) %>");
+
+<!--$('#comment_all_index_<%#= @end_users.id %>').html("<%#= j(render "comment_all", end_users: @end_users) %>");-->
