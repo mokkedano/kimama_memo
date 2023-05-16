@@ -4,10 +4,13 @@
 <!--  <h2>したためたメモたち (全<%#= @all_posts_count %>枚)</h2>-->
 <!--<%# end %>-->
 
-<% @categories.each do |category|%>
-  <%= link_to category.name, posts_search_category_path(category_id: category.id) %>
-  <%= "(#{category.posts.count})" %>
-<% end %>
+<%# @categories.each do |category|%>
+  <%#= link_to category.name, posts_search_category_path(category_id: category.id) %>
+  <%#= "(#{category.posts.where(end_user_id: current_end_user.id).count})" %>
+<%# end %>
+
+
+<%= render "categories", categories: @categories %>
 
 
 

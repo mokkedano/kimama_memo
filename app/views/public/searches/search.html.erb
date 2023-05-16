@@ -1,22 +1,42 @@
 <h2>みんなのメモ</h2>
 
 
-<h3>検索結果 (全<%= @all_posts_count %>枚)</h3>
+<h3>検索結果 (全<%#= @all_posts_count %>枚)</h3>
 
+
+<%#= render "public/posts/categories", categories: @categories %>
+
+
+
+<div id="tag_box">
+  <p style="font-size:15px;">自分が作成したカテゴリ</p>
+    <% if @categories.present? %>
+      <!--last_tagという箱を作成-->
+      <% last_category = nil %>
+      <% @categories.each do |category| %>
+      <!--タグが被ってなければ、名前表示/タグ被ってたら何もせず-->
+        <% if category != last_category %>
+          <span style="font-size:15px; margin:2px;">
+            <%= link_to category.name, search_path(category_id: category.id), class: "btn btn-sm btn-outline-primary" %>
+          </span>
+        <% end %>
+      <!--今取り出したタグをlast_tagに入れる-->
+        <% last_category = category %>
+      <% end %>
+    <% else %>
+      <p>登録しているカテゴリがありません。</p>
+    <% end %>
+</div>
 
 
 <%= form_with url: search_path, local: true, method: :get do |f| %>
-    <%# Category.all.each do |category| %>
+    <%## Category.all.each do |category| %>
     <% @categories.each do |category| %>
         <li><%= check_box :category_ids, category.name %><%= category.name %></li>
     <% end %>
     <%= f.submit "検索" %>
 <% end %>
 
-
-
-
-<!--カテゴリを検索フォームに入力しても検索結果が表示されない。-->
 
 
 

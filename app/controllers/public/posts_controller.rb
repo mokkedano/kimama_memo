@@ -1,11 +1,11 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_end_user!
-  before_action :is_matching_login_end_user, only: [:edit, :update, :destroy]
+  # before_action :is_matching_login_end_user, only: [:edit, :update, :destroy]
 
 
   def new
     @post = Post.new
-    @categories = current_end_user.categories
+    @categories = current_end_user.categories.order('created_at DESC')
   end
 
 
@@ -25,7 +25,7 @@ class Public::PostsController < ApplicationController
   def index
     # @posts = Post.page(params[:page]).per(10)
     @posts = current_end_user.posts
-    @categories = current_end_user.categories
+    @categories = current_end_user.categories.order('created_at DESC')
 
     # @categories = Category.all
     # if params[:category_id]
@@ -51,7 +51,7 @@ class Public::PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     @category_list = @post.categories.pluck(:name).join(',')
-    @categories = current_end_user.categories
+    @categories = current_end_user.categories.order('created_at DESC')
   end
 
 
@@ -79,13 +79,10 @@ class Public::PostsController < ApplicationController
 
 
   def search_category
-    @categories = current_end_user.categories
-     @category = Category.find(params[:category_id])
-    @posts = current_end_user.posts.includes(:post_category_relations).where(post_category_relations: {category_id: params[:category_id] }) 
+    @categories = current_end_user.categories.order('created_at DESC')
+    @category = Category.find(params[:category_id])
+    @posts = current_end_user.posts.includes(:post_category_relations).where(post_category_relations: {category_id: params[:category_id] })
     # @posts = @category.posts.page(params[:page]).per(10)
-    
-   #
-
   end
 
 
@@ -98,12 +95,12 @@ class Public::PostsController < ApplicationController
   end
 
 
-  def is_matchig_login_end_user
-    post = Post.find(params[:id])
-    unless post.end_user.id == current_end_user.id
-      redirect_to root_path
-    end
-  end
+  # def is_matchig_login_end_user
+  #   post = Post.find(params[:id])
+  #   unless post.end_user.id == current_end_user.id
+  #     redirect_to root_path
+  #   end
+  # end
 
 
 end

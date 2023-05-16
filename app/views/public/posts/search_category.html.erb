@@ -1,8 +1,5 @@
-<% @categories.each do |category|%>
-  <%= link_to category.name, posts_search_category_path(category_id: category.id) %>
-  <%= "(#{category.posts.where(end_user_id: current_end_user.id).count})" %>
-<% end %>
 
+<%= render "categories", categories: @categories %>
 
 
 <h5><%= @category.name%>のメモたち</h5>

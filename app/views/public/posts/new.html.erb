@@ -2,7 +2,5 @@
 
 <%= render "form", post: @post, url: posts_path, submit: "メモ作成" %>
 
-<% @categories.each do |category|%>
-  <%= category.name %>
-  <%= "(#{category.posts.count})" %>
-<% end %>
+<%= render "categories", categories: @categories %>
+

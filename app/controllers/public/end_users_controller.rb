@@ -9,7 +9,8 @@ class Public::EndUsersController < ApplicationController
     # @end_user = current_end_user
     @posts = @end_user.posts.where(status: true).order('created_at DESC')
     # @point = @end_user.passive_points.all
-    @posts_category = @end_user.categories.order('created_at DESC').limit(15)
+    @categories = @end_user.categories.order('created_at DESC').limit(15)
+    # @posts_category = @end_user.categories.order('created_at DESC').limit(15)
   end
 
 

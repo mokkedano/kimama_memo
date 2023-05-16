@@ -27,13 +27,15 @@
 
 <div id="tag_box">
   <p style="font-size:15px;">最近メモを作成したカテゴリ</p>
-    <% if @posts_category.present?%>
+    <% if @categories.present? %>
       <!--last_tagという箱を作成-->
       <% last_category = nil %>
-      <% @posts_category.each do |category| %>
+      <% @categories.each do |category| %>
       <!--タグが被ってなければ、名前表示/タグ被ってたら何もせず-->
         <% if category != last_category %>
-          <span style="font-size:15px; margin:2px;"><%= link_to category.name, posts_search_category_path(category_id: category.id), class: "btn btn-sm btn-outline-primary"%></span>
+          <span style="font-size:15px; margin:2px;">
+            <%= link_to category.name, posts_search_category_path(category_id: category.id), class: "btn btn-sm btn-outline-primary" %>
+          </span>
         <% end %>
       <!--今取り出したタグをlast_tagに入れる-->
         <% last_category = category %>

@@ -30,23 +30,27 @@ class Post < ApplicationRecord
 
 
   # 検索方法の分岐に関する記述
-  def self.looks(search, word)
-    if search == "perfect_match"
-      @post = Post.where("title LIKE(?) or introduction LIKE(?)", "#{word}", "#{word}")
-    elsif search == "partial_match"
-      @post = Post.where("title LIKE(?) or introduction LIKE(?)", "%#{word}%", "%#{word}%")
-    else
-      @post = Post.all
-    end
+  # def self.looks(search, word)
+  #   if search == "perfect_match"
+  #     @post = Post.where("title LIKE(?) or introduction LIKE(?)", "#{word}", "#{word}")
+  #   elsif search == "partial_match"
+  #     @post = Post.where("title LIKE(?) or introduction LIKE(?)", "%#{word}%", "%#{word}%")
+  #   else
+  #     @post = Post.all
+  #   end
+  # end
+  
+  
+  # 検索機能に関する記述
+  def self.looks(word)
+    @post = Post.where("title LIKE(?) or introduction LIKE(?)", "%#{word}%", "%#{word}%")
   end
 
-  def self.looks_by_category(search, word)
+  def self.looks_by_category(word)
     post_category_relations = PostCategoryRelation.includes(:category).where("categories.name LIKE ?", "%#{word}%")
     ids = post_category_relations.pluck(:post_id)
     Post.where(id: ids)
   end
-
-
 
 
   # いいね機能に関するメソッド
