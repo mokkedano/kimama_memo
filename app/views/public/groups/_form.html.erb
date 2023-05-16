@@ -1,6 +1,6 @@
 <%= form_with model: group, url: url, local: true do |f| %>
 
-<%= text_field_tag 'group[end_user_ids]', "#{current_end_user.id}", type: 'hidden' %>
+<%#= text_field_tag 'group[end_user_ids]', "#{current_end_user.id}", type: 'hidden' %>
 
   <div class="form-group">
     <%= f.label :グループ名 %>

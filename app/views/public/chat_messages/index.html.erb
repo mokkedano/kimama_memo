@@ -1,0 +1,12 @@
+<h3>チャットページ</h3>
+
+<%= link_to "グループ詳細へ戻る", group_path(@group) %>
+
+
+<!--投稿フォーム-->
+<%= form_with model: @messages, url: group_chat_messages_path, local: true, method: :post do |f| %>
+
+<%#= text_field_tag "chat_message[group_id]", "{@group.id}", type: "hidden" %>
+  <%= f.text_area :message %>
+  <%= f.submit "送信" %>
+<% end %>

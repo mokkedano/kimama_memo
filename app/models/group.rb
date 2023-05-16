@@ -6,6 +6,8 @@ class Group < ApplicationRecord
   # groupsテーブルから中間テーブル(group_users)を介してend_usersテーブルへの関連付け
   has_many :end_users, through: :group_users
 
+  has_many :chat_message, dependent: :destroy
+
 
   has_one_attached :group_image
 

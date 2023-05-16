@@ -34,6 +34,9 @@ class Public::GroupsController < ApplicationController
     @group_joining = GroupUser.where(end_user_id: current_end_user.id)
     @groups_none = "グループに参加していません。"
     # @groups = @group_joining
+
+    # @groups = Group.includes(:group_users).where(group_users: {end_user_id: params[:end_user_id] })
+
   end
 
 

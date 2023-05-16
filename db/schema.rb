@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_15_134423) do
+ActiveRecord::Schema.define(version: 2023_05_16_180557) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -56,6 +56,16 @@ ActiveRecord::Schema.define(version: 2023_05_15_134423) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "chat_messages", force: :cascade do |t|
+    t.text "message", null: false
+    t.integer "group_id"
+    t.integer "end_user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["end_user_id"], name: "index_chat_messages_on_end_user_id"
+    t.index ["group_id"], name: "index_chat_messages_on_group_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -127,6 +137,8 @@ ActiveRecord::Schema.define(version: 2023_05_15_134423) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chat_messages", "end_users"
+  add_foreign_key "chat_messages", "groups"
   add_foreign_key "group_users", "end_users"
   add_foreign_key "group_users", "groups"
   add_foreign_key "post_category_relations", "categories"

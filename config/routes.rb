@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     resources :groups do
       get "join" => "groups#join"
       delete "destroy_all" => 'groups#destroy_all'
+      resources :chat_messages ,only: [:index, :create, :destroy]
     end
 
   end
@@ -60,7 +61,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :edit, :update, :destroy]
     resources :end_users, only: [:index, :show, :edit, :update] do
       get "posts" => "end_users#posts"
-      resources :comments, only: [:index, :destroy] 
+      resources :comments, only: [:index, :destroy]
         # get "comment_all" => "comment#comment_all"
     end
   end

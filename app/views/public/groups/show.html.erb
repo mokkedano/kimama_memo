@@ -8,6 +8,7 @@
         <th>紹介文</th>
         <th>メンバー数</th>
         <th colspan="2">メンバー</th>
+        <th></th>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -15,7 +16,13 @@
       <tr>
         <td><%= image_tag @group.get_group_image(100,100) %></td>
         <td><%= @group.name %></td>
-        <td><%= @group.introduction %></td>
+        <td>
+          <% if @group.introduction != "" %>
+            <%= @group.introduction %>
+          <% else %>
+            現在未設定です。自由に書いてみましょう！
+          <% end %>
+        </td>
         <td><%= @group.end_users.count %></td>
         <td>
           <% @group.end_users.each do |member| %>
@@ -23,6 +30,7 @@
             <%= member.nickname %>
           <% end %>
         </td>
+        <td><%= link_to "チャットページへ", group_chat_messages_path(@group), class: "btn btn-sm btn-success" %></td>
         <td>
           <% if @group.owner_id == current_end_user.id %>
             <%= link_to '編集', edit_group_path(@group), class: "btn btn-sm btn-success" %>

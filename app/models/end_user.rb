@@ -21,6 +21,8 @@ class EndUser < ApplicationRecord
   # end_usersテーブルから中間テーブル(group_users)を介してgroupsテーブルへの関連付け
   has_many :groups, through: :group_users
 
+  has_many :chat_message, dependent: :destroy
+
 
   has_one_attached :profile_image
 
