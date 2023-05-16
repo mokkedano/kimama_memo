@@ -8,28 +8,28 @@ class Public::SearchesController < ApplicationController
     if @range == "Post"
       @posts = Post.looks(params[:search], params[:word])
     else
-      @posts = Category.looks(params[:search], params[:word])
+      @posts = Post.looks_by_category(params[:search], params[:word])
     end
 
     # キーワード検索とカテゴリ検索を両立させたくて記述したコード
-    @posts= Post.all
-    @categories = current_end_user.categories
-    @posts = @posts.where("title LIKE(?) or introduction LIKE(?)", "%#{params[:word]}%","%#{params[:word]}%") if params[:word].present?
-    #もしカテゴリ検索したら、post_idsにカテゴリを持ったidをまとめてそのidで検索
-    if params[:category_ids].present?
-      post_ids = []
-      params[:category_ids].each do |key, value|
-        if value == "1"
-          Category.find_by(name: key).posts.each do |p|
-            post_ids << p.id
-          end
-        end
-      end
-      post_ids = post_ids.uniq
-      #キーワードとカテゴリのAND検索
-      @posts = @posts.where(id: post_ids) if post_ids.present?
-    end
-     @all_posts_count = @posts.count
+    # @posts= Post.all
+     @categories = current_end_user.categories
+    # @posts = @posts.where("title LIKE(?) or introduction LIKE(?)", "%#{params[:word]}%","%#{params[:word]}%") if params[:word].present?
+    # #もしカテゴリ検索したら、post_idsにカテゴリを持ったidをまとめてそのidで検索
+    # if params[:category_ids].present?
+    #   post_ids = []
+    #   params[:category_ids].each do |key, value|
+    #     if value == "1"
+    #       Category.find_by(name: key).posts.each do |p|
+    #         post_ids << p.id
+    #       end
+    #     end
+    #   end
+    #   post_ids = post_ids.uniq
+    #   #キーワードとカテゴリのAND検索
+    #   @posts = @posts.where(id: post_ids) if post_ids.present?
+    # end
+    # @all_posts_count = @posts.count
   end
 
 

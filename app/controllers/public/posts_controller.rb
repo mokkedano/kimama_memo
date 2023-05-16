@@ -80,10 +80,12 @@ class Public::PostsController < ApplicationController
 
   def search_category
     @categories = current_end_user.categories
-    # @category = @categories.find(params[:category_id])
-    @category = current_end_user.categories.find(params[:category_id])
+     @category = Category.find(params[:category_id])
+    @posts = current_end_user.posts.includes(:post_category_relations).where(post_category_relations: {category_id: params[:category_id] }) 
     # @posts = @category.posts.page(params[:page]).per(10)
-    @posts = @category.posts
+    
+   #
+
   end
 
 

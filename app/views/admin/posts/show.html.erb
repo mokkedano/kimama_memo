@@ -14,9 +14,9 @@
 
 
 <!--コメント数 -->
-<div id="comment_count_<%= @post.id %>">
+<!--<div id="comment_count_<%#= @post.id %>">-->
   <%= render "public/comments/comment_count", post: @post %>
-</div>
+<!--</div>-->
 <!--コメント一覧-->
 <div id="comment_area_<%= @post.id %>">
   <%= render "public/comments/comment", post: @post %>

@@ -10,11 +10,14 @@
 	</thead>
 
 	<tbody>
-	  <div id="comment_index_<%= @end_user.id %>">
-      	<%= render "comments", end_user: @end_user %>
-    </div>
+	  
 	</tbody>
 </table>
 
 
 
+
+
+<div id="comment_index_<%= @end_user.id %>">
+      	<%= render "comments", end_user: @end_user %>
+    </div>

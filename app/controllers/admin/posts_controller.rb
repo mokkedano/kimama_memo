@@ -8,6 +8,7 @@ class Admin::PostsController < ApplicationController
 
 
   def show
+    @end_user = EndUser.find(params[:id])
   end
 
 
@@ -26,3 +27,4 @@ class Admin::PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 end
+

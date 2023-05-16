@@ -40,6 +40,14 @@ class Post < ApplicationRecord
     end
   end
 
+  def self.looks_by_category(search, word)
+    post_category_relations = PostCategoryRelation.includes(:category).where("categories.name LIKE ?", "%#{word}%")
+    ids = post_category_relations.pluck(:post_id)
+    Post.where(id: ids)
+  end
+
+
+
 
   # いいね機能に関するメソッド
   def favorited_by?(end_user)
