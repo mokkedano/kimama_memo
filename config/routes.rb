@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     get "group_all" => "groups#group_all"
     resources :groups do
       get "join" => "groups#join"
+      delete "destroy_all" => 'groups#destroy_all'
     end
 
   end
@@ -58,6 +59,7 @@ Rails.application.routes.draw do
     root :to => "homes#top"
     resources :posts, only: [:index, :show, :edit, :update, :destroy]
     resources :end_users, only: [:index, :show, :edit, :update] do
+      get "posts" => "end_users#posts"
       resources :comments, only: [:index, :destroy]
     end
   end

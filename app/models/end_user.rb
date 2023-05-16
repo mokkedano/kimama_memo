@@ -17,7 +17,7 @@ class EndUser < ApplicationRecord
 
   # groupモデルとのアソシエーション
   # end_usersテーブルから中間テーブル(group_users)に対する関連付け
-  has_many :group_users
+  has_many :group_users, dependent: :destroy
   # end_usersテーブルから中間テーブル(group_users)を介してgroupsテーブルへの関連付け
   has_many :groups, through: :group_users
 

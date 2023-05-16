@@ -24,6 +24,12 @@ class Admin::EndUsersController < ApplicationController
   end
 
 
+  def posts
+    @end_user = EndUser.find(params[:end_user_id])
+    @posts = @end_user.posts
+  end
+
+
 
 
   private
