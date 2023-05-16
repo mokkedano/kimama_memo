@@ -36,6 +36,10 @@ Rails.application.routes.draw do
     # searchesコントローラー
     get "search" => "searches#search"
 
+    # groupsコントローラー
+    get "group_all" => "groups#group_all"
+    resources :groups, except: [:destroy]
+
   end
 
 

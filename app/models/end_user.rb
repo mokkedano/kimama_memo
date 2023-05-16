@@ -15,6 +15,12 @@ class EndUser < ApplicationRecord
   # end_usersテーブルから中間テーブル(post_category_relations)を介してcategoriesテーブルへの関連付け
   has_many :categories, through: :post_category_relations
 
+  # groupモデルとのアソシエーション
+  # end_usersテーブルから中間テーブル(group_users)に対する関連付け
+  has_many :group_users
+  # end_usersテーブルから中間テーブル(group_users)を介してgroupsテーブルへの関連付け
+  has_many :groups, through: :group_users
+
 
   has_one_attached :profile_image
 
