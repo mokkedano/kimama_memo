@@ -3,29 +3,35 @@ class Public::SearchesController < ApplicationController
 
 
   def search
+    @posts= Post.all
+    all_posts = @posts
+
+    # タグ検索に関する記述
     if params[:category_id]
-       @posts = Post.includes(:post_category_relations).where(post_category_relations: {category_id: params[:category_id] })
-     end
-
-
-
+      @posts = Post.includes(:post_category_relations).where(post_category_relations: {category_id: params[:category_id] })
+      all_posts = @posts
+      @category_name = @posts
+    end
 
     # キーワード検索に関する記述
     if @range = params[:range]
-    if @range == "Post"
-      @posts = Post.looks(params[:word])
-      # @posts = Post.looks(params[:search], params[:word])
-    else
-      @posts = Post.looks_by_category(params[:word])
-      # @posts = Post.looks_by_category(params[:search], params[:word])
+      if @range == "Post"
+        @posts = Post.looks(params[:word])
+        # @posts = Post.looks(params[:search], params[:word])
+      else
+        @posts = Post.looks_by_category(params[:word])
+        # @posts = Post.looks_by_category(params[:search], params[:word])
+      end
+      all_posts = @posts
     end
+    @categories = current_end_user.categories.order('created_at DESC')
+    @all_posts_count = all_posts.count
+
+
   end
-    @categories = current_end_user.categories
 
+end
 
-    # @category = Category.find(params[:category_id])
-
-    # @posts = Post.includes(:post_category_relations).where(post_category_relations: {category_id: params[:category_id] })
 
 
 
@@ -48,11 +54,7 @@ class Public::SearchesController < ApplicationController
     #   #キーワードとカテゴリのAND検索
     #   @posts = @posts.where(id: post_ids) if post_ids.present?
     # end
-    # @all_posts_count = @posts.count
-  end
 
-
-end
 
 
  #   @posts = Post.all

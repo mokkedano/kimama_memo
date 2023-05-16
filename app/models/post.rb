@@ -16,7 +16,7 @@ class Post < ApplicationRecord
 
   validates :title, presence: true, length: { minimum: 1, maximum: 30 }
   validates :introduction, presence: true
-  # validates :image, presence: true
+
 
 
 
@@ -39,8 +39,8 @@ class Post < ApplicationRecord
   #     @post = Post.all
   #   end
   # end
-  
-  
+
+
   # 検索機能に関する記述
   def self.looks(word)
     @post = Post.where("title LIKE(?) or introduction LIKE(?)", "%#{word}%", "%#{word}%")
