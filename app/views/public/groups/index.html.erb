@@ -2,7 +2,7 @@
   <div><%=link_to "グループを作成する", new_group_path %></div>
 
 
-<h2>グループ一覧</h2>
+<h2>参加しているグループ一覧</h2>
 
 <% if @group_joining == [] %>
   <%= @groups_none %>
@@ -19,6 +19,7 @@
     </thead>
     <tbody>
       <% @groups.each do |group| %>
+        <%# if group.end_user_ids.include?(current_end_user.id) %>
         <tr>
           <td>
             <%= link_to group_path(group) do %>
@@ -27,12 +28,14 @@
     		  </td>
           <td><%= link_to group.name, group_path(group) %></td>
           <td><%= group.introduction %></td>
+          <td><%= group.end_users.count %></td>
           <td>
             <% if group.owner_id == current_end_user.id %>
               <%= link_to "編集", edit_group_path(group), class: "btn btn-sm btn-success" %>
             <% end %>
           </td>
         </tr>
+        <%# end %>
       <% end %>
     </tbody>
   </table>

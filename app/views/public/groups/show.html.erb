@@ -1,0 +1,38 @@
+<div class='col-md-12'>
+  <h2>グループ情報</h2>
+  <table class='table table-hover table-inverse'>
+   <thead>
+      <tr>
+        <th></th>
+        <th>グループ名</th>
+        <th>紹介文</th>
+        <th>メンバー数</th>
+        <th colspan="2">メンバー</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= image_tag @group.get_group_image(100,100) %></td>
+        <td><%= @group.name %></td>
+        <td><%= @group.introduction %></td>
+        <td><%= @group.end_users.count %></td>
+        <td>
+          <% @group.end_users.each do |member| %>
+            <%= image_tag member.get_profile_image(50,50) %>
+            <%= member.nickname %>
+          <% end %>
+        </td>
+        <td>
+          <% if @group.owner_id == current_end_user.id %>
+            <%= link_to '編集', edit_group_path(@group), class: "btn btn-sm btn-success" %>
+          <% elsif @group.end_users.include?(current_end_user) %>
+            <%= link_to 'グループを離れる', group_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
+          <% else %>
+            <%= link_to 'グループへ参加する', group_join_path(@group), class: "btn btn-sm btn-success" %>
+          <% end %>
+        </td>
+      </tr>
+  </tbody>
+  </table>
+</div>

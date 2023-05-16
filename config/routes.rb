@@ -38,7 +38,9 @@ Rails.application.routes.draw do
 
     # groupsコントローラー
     get "group_all" => "groups#group_all"
-    resources :groups, except: [:destroy]
+    resources :groups do
+      get "join" => "groups#join"
+    end
 
   end
 
