@@ -13,7 +13,6 @@ class Public::ChatMessagesController < ApplicationController
     @group = Group.find(params[:group_id])
     @message = ChatMessage.new(message_params)
     if @message.save
-        # binding.pry
       redirect_to group_chat_messages_path(@group), notice: "メッセージを送信しました！"
     else
       render :index
@@ -22,6 +21,11 @@ class Public::ChatMessagesController < ApplicationController
 
 
   def destroy
+    @group = Group.find(params[:group_id])
+    @messages = ChatMessage.find(params[:id])
+    if @messages.destroy
+      redirect_to group_chat_messages_path(@group), notice: "メッセージを削除しました。"
+    end
   end
 
 

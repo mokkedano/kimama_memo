@@ -4,19 +4,24 @@
 
 
 <% @messages.each do |message| %>
-<%= image_tag message.end_user.get_profile_image(50,50) %>
-<%= message.end_user.nickname %>
-<p><%= message.message %></p>
-<p><%= message.created_at.strftime('%Y/%m/%d %T') %></p>
+  <%= image_tag message.end_user.get_profile_image(50,50) %>
+  <%= message.end_user.nickname %>
+  <p><%= message.message %></p>
+  <p><%= message.created_at.strftime('%Y/%m/%d %T') %></p>
+  <% if message.end_user == current_end_user %>
+    <%#= link_to "メモを編集する", edit_post_path(@post), class: "btn btn-success" %>
+    <%= link_to "削除する", group_chat_message_path(message.group, message), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>
+  <% end %>
 <% end %>
 
 
 <!--投稿フォーム-->
 <%#= form_with model: @message, url: group_chat_messages_path(@group.id), local: true, method: :post do |f| %>
 <%= form_with model: @message, url: group_chat_messages_path(group_id: @group.id), local: true, method: :post do |f| %>
-<%= f.hidden_field :group_id, :value => @group.id %>
-<%#= f.hidden_field :id, :value => date.id %>
-<%#= text_field_tag "chat_message[group_id]", "{@group.id}", type: "hidden" %>
-  <%= f.text_area :message, name: "chat_message[message]" %>
+  <%= f.hidden_field :group_id, :value => @group.id %>
+  <%#= f.hidden_field :id, :value => date.id %>
+  <%#= text_field_tag "chat_message[group_id]", "{@group.id}", type: "hidden" %>
+  <%= f.text_area :message %>
+  <%#= f.text_area :message, name: "chat_message[message]" %>
   <%= f.submit "送信" %>
 <% end %>
