@@ -30,9 +30,10 @@ class Public::GroupsController < ApplicationController
 
 
   def index
-    @groups = Group.all
-    @group_joining = GroupUser.where(end_user_id: current_end_user.id)
+    @groups = current_end_user.groups
+    #@group_joining = GroupUser.where(end_user_id: current_end_user.id)
     @groups_none = "グループに参加していません。"
+    #binding.pry
     # @groups = @group_joining
 
     # @groups = Group.includes(:group_users).where(group_users: {end_user_id: params[:end_user_id] })

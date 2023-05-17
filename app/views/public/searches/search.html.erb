@@ -1,7 +1,7 @@
 <h2>みんなのメモ</h2>
 
 <% if params[:category_id] %>
-  <h3><%= @category_name %>のメモ 検索結果 (全<%= @all_posts_count %>枚)</h3>
+  <h3><%= @category.name %>のメモ 検索結果 (全<%= @all_posts_count %>枚)</h3>
 <% elsif %>
 <%# if params[:range] %>
   <h3><%= params[:word] %>のメモ 検索結果 (全<%= @all_posts_count %>枚)</h3>

@@ -14,6 +14,7 @@ class Admin::CommentsController < ApplicationController
     @end_user = EndUser.find(params[:end_user_id])
     comment = Comment.find(params[:id])
     comment.destroy
+    @post = comment.post
   end
 
 

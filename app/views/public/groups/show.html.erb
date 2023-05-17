@@ -30,7 +30,11 @@
             <%= member.nickname %>
           <% end %>
         </td>
-        <td><%= link_to "チャットページへ", group_chat_messages_path(@group), class: "btn btn-sm btn-success" %></td>
+        <td>
+          <% if @group.end_users.include?(current_end_user) %>
+            <%= link_to "チャットページへ", group_chat_messages_path(@group), class: "btn btn-sm btn-success" %>
+          <% end %>
+        </td>
         <td>
           <% if @group.owner_id == current_end_user.id %>
             <%= link_to '編集', edit_group_path(@group), class: "btn btn-sm btn-success" %>

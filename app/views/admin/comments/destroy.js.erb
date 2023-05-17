@@ -1,4 +1,4 @@
-<!--$('#comment_count_<%#= @post.id %>').html("<%#= j(render "public/comments/comment_count", post: @post) %>");-->
+$('#comment_count_<%= @post.id %>').html("<%= j(render "public/comments/comment_count", post: @post) %>");
 
 $('#comment_area_<%= @post.id %>').html("<%= j(render "public/comments/comment", post: @post) %>");
 

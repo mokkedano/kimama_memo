@@ -10,7 +10,8 @@ class Public::SearchesController < ApplicationController
     if params[:category_id]
       @posts = Post.includes(:post_category_relations).where(post_category_relations: {category_id: params[:category_id] })
       all_posts = @posts
-      @category_name = @posts
+      @category = Category.find(params[:category_id])
+      #@category_name = @posts
     end
 
     # キーワード検索に関する記述
