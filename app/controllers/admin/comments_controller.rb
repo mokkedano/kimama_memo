@@ -6,8 +6,11 @@ class Admin::CommentsController < ApplicationController
   end
 
 
-  # def comment_all
-  # end
+  def comment_all
+    @comments = Comment.all
+    # @comments = Comment.where(comment: @comment)
+    # @end_user = Comment.find(params[:post_id])
+  end
 
 
   def destroy
@@ -15,6 +18,7 @@ class Admin::CommentsController < ApplicationController
     comment = Comment.find(params[:id])
     comment.destroy
     @post = comment.post
+    @comments = Comment.find(params[:id])
   end
 
 

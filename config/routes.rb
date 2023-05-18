@@ -58,11 +58,13 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root :to => "homes#top"
+    get "comment_all" => "comments#comment_all"
     resources :posts, only: [:index, :show, :edit, :update, :destroy]
+    resources :groups, only: [:index, :show, :edit, :update, :destroy]
     resources :end_users, only: [:index, :show, :edit, :update] do
       get "posts" => "end_users#posts"
+      # get "comment_all" => "comments#comment_all"
       resources :comments, only: [:index, :destroy]
-        # get "comment_all" => "comment#comment_all"
     end
   end
 
