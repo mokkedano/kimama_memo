@@ -1,28 +1,61 @@
-<h1>マイページ</h1>
+<div class='container'>
+  <div class="mypage">
+    <h4>マイページ</h4>
+  </div>
 
-<h4>名前</h4>
-<%= @end_user.nickname %>
-
-<h4>画像</h4>
-<%= image_tag @end_user.get_profile_image(100,100) %>
-
-<h4>自己紹介</h4>
-<%= @end_user.self_introduction %>
+  <div class='row mt-md-5'>
+    <div class='col-md-3'>
+      <%= image_tag @end_user.get_profile_image(150,150) %>
 
 
-<div>
-  <% if @end_user.nickname != "guest_end_user" %>
-    <%= link_to "プロフィール編集", end_users_information_edit_path %>
-  <% end %>
-  <%= link_to "メモを書く", new_post_path %>
-  <%= link_to "メモ一覧", posts_path %>
-  <%= link_to "カテゴリ管理", categories_path %>
-  <%= link_to "いいねしたメモたち", favorite_index_path %>
-  <%= link_to "参加しているグループ", groups_path %>
-  <% if @end_user.nickname != "guest_end_user" %>
-    <%= link_to "退会する", unsubscribe_path %>
-  <% end %>
-</div>
+
+    <div class="nickname mt-md-4">
+      <div>
+        <p>＊メモ主</p>
+        <p>&emsp;<%= @end_user.nickname %></p>
+      </div>
+      <div class='mt-md-2'>
+        <p>＊自己紹介</p>
+        <p>&emsp;
+          <% if @end_user.self_introduction != "" %>
+            <%= @end_user.self_introduction %>
+          <% else %>
+            現在未設定です。
+          <% end %>
+        </p>
+      </div>
+    </div>
+
+    <p>
+      <% if @end_user.nickname != "guest_end_user" %>
+        <%= link_to "プロフィール編集", end_users_information_edit_path %>
+      <% end %>
+    </p>
+    
+    
+    <div>
+        <ul>
+          <li><%= link_to "メモを書く", new_post_path %></li>
+          <li><%= link_to "メモ一覧", posts_path %></li>
+          <li><%= link_to "カテゴリ管理", categories_path %></li>
+          <li><%= link_to "いいねしたメモたち", favorite_index_path %></li>
+          <li><%= link_to "参加しているグループ", groups_path %></li>
+          <li>
+            <% if @end_user.nickname != "guest_end_user" %>
+              <%= link_to "退会する", unsubscribe_path %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+
+
+  </div>
+
+
+
+
+    <div class='col-md-6'>
+      
 
 
 <div id="tag_box">
@@ -43,4 +76,50 @@
     <% else %>
       <p>メモがありません。</p>
     <% end %>
+</div>
+
+
+
+
+<% if @posts.exists? %>
+
+  <div class= "card">
+    <div class= "card-body">
+
+
+    <% @posts.each do |post| %>
+
+        <%= link_to post_path(post) do %>
+          <%= image_tag post.get_image(100,100) %>
+    			<p><%= post.title %></p>
+    		<% end %>
+
+  		  <p><%= post.introduction.truncate(25) %></p>
+
+
+        <!--投稿一覧画面で投稿に紐づくタグを表示-->
+        <%= post.categories.map(&:name).join(', ') %>
+
+
+  		  <!--いいね機能-->
+		    <div id="favorite_buttons_<%= post.id %>">
+  		    <%= render "public/favorites/favorite", post: post %>
+		    </div>
+		    <!--いいね機能 ここまで-->
+
+  		  <p><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></p>
+  	<% end %>
+
+<% else %>
+	<h3>メモが 0 枚です。</h3>
+<% end %>
+
+</div>
+</div>
+
+
+
+</div>
+
+</div>
 </div>

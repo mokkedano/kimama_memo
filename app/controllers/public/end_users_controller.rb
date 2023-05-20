@@ -6,21 +6,19 @@ class Public::EndUsersController < ApplicationController
 
 
   def show
-    # @end_user = current_end_user
-    @posts = @end_user.posts.where(status: true).order('created_at DESC')
+    # @posts = @end_user.posts.where(status: true).order('created_at DESC')
     # @point = @end_user.passive_points.all
     @categories = @end_user.categories.order('created_at DESC').limit(15)
     # @posts_category = @end_user.categories.order('created_at DESC').limit(15)
+    @posts = @end_user.posts.order('id DESC').limit(4)
   end
 
 
   def edit
-    # @end_user = current_end_user
   end
 
 
   def update
-    # @end_user = current_end_user
     if @end_user.update(end_user_params)
       redirect_to my_page_path, notice: "プロフィールを更新しました！"
     else
@@ -34,7 +32,6 @@ class Public::EndUsersController < ApplicationController
 
 
   def withdrawal
-    # @end_user = current_end_user
     @end_user.update(is_deleted: true)
     reset_session
     flash[:notice] = "退会処理を実行いたしました。"
@@ -43,7 +40,6 @@ class Public::EndUsersController < ApplicationController
 
 
   def favorites
-    # @end_user = current_end_user
     favorites = Favorite.where(end_user_id: @end_user.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)
     # @post = Post.find(params[:id])

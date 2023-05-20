@@ -1,0 +1,46 @@
+/*見出し「マイページ」の部分*/
+.mypage {
+  display: inline-block;
+  position: relative;
+  padding: 15px 20px;
+  font-size: 18px;/*フォントサイズ*/
+  color: #FFF;/*フォントカラー*/
+  background: #a6d3c8;/*リボンの色*/
+}
+
+.mypage:before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 15px transparent;
+  border-right: solid 20px rgb(149, 158, 155);/*折り返し部分*/
+}
+
+
+
+
+/*ニックネームと自己紹介の部分*/
+.nickname{
+    margin:2em 0;
+    position: relative;
+    padding: 0.5em 1.5em;
+    border-top: solid 2px black;
+    border-bottom: solid 2px black;
+}
+.nickname:before, .nickname:after{
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: -webkit-calc(100% + 20px);
+    height: calc(100% + 20px);
+    background-color: black;
+}
+.nickname:before {left: 10px;}
+.nickname:after {right: 10px;}
+.nickname p {
+    margin: 0;
+    padding: 0;
+}
