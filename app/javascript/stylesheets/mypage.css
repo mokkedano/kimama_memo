@@ -23,29 +23,29 @@
 
 /*ニックネームと自己紹介の部分*/
 .nickname {
-    margin:2em 0;
-    position: relative;
-    padding: 0.5em 1.5em;
-    border-top: solid 2px black;
-    border-bottom: solid 2px black;
+  margin:2em 0;
+  position: relative;
+  padding: 0.5em 1.5em;
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
 }
 
 .nickname:before, .nickname:after {
-    content: '';
-    position: absolute;
-    top: -10px;
-    width: 2px;
-    height: -webkit-calc(100% + 20px);
-    height: calc(100% + 20px);
-    /*background-color: black;*/
-    background-color: #808080;
+  content: '';
+  position: absolute;
+  top: -10px;
+  width: 2px;
+  height: -webkit-calc(100% + 20px);
+  height: calc(100% + 20px);
+  /*background-color: black;*/
+  background-color: #808080;
 }
 
 .nickname:before {left: 10px;}
 .nickname:after {right: 10px;}
 .nickname p {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -84,18 +84,30 @@
 
 /*プロフィール編集ボタン部分*/
 .setting {
-    padding: 0.2em 0.5em;
-    margin: 2em 0;
-    background: #d6ebff;
-    box-shadow: 0px 0px 0px 10px #d6ebff;
-    border: dashed 2px white;
+  padding: 0.2em 0.5em;
+  margin: 2em 0;
+  background: #d6ebff;
+  box-shadow: 0px 0px 0px 10px #d6ebff;
+  border: dashed 2px white;
 }
 
 .setting p {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .setting_btn {
-    color: #c0c0c0;
+  color: #c0c0c0;
+}
+
+
+
+.memo_pin {
+  text-align: center;
+  color: #808080;
+}
+
+
+.card-deck {
+  display: flex;
 }

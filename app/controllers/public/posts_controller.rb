@@ -1,5 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_end_user!
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_end_user, only: [:new, :index, :show, :edit, :search_category]
   # before_action :is_matching_login_end_user, only: [:edit, :update, :destroy]
 
 
@@ -42,22 +44,18 @@ class Public::PostsController < ApplicationController
 
 
   def show
-    @post = Post.find(params[:id])
     @comment = Comment.new
     @categories = @post.categories
-    @end_user = current_end_user
   end
 
 
   def edit
-    @post = Post.find(params[:id])
     @category_list = @post.categories.pluck(:name).join(',')
     @categories = current_end_user.categories.order('created_at DESC')
   end
 
 
   def update
-    @post = Post.find(params[:id])
     category_list = params[:post][:name].split(',')
     if @post.update(post_params)
       @old_relations = PostCategoryRelation.where(post_id: @post.id)
@@ -73,7 +71,6 @@ class Public::PostsController < ApplicationController
 
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
     redirect_to posts_path, notice: "メモを削除しました。"
   end
@@ -92,7 +89,16 @@ class Public::PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:title, :introduction, :image)
-    # params.require(:post).permit(:title, :introduction, :image, category_ids: [])
+  end
+
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+
+  def set_end_user
+    @end_user = current_end_user
   end
 
 
