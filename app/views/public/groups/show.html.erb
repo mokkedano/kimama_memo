@@ -1,6 +1,6 @@
-<div class='col-md-12'>
+<div class="col-md-12">
   <h2>グループ情報</h2>
-  <table class='table table-hover table-inverse'>
+  <table class="table table-hover table-inverse">
    <thead>
       <tr>
         <th></th>
@@ -37,14 +37,14 @@
         </td>
         <td>
           <% if @group.owner_id == current_end_user.id %>
-            <%= link_to '編集', edit_group_path(@group), class: "btn btn-sm btn-success" %>
-            <%= link_to 'グループを削除する', group_destroy_all_path(@group), method: :delete,
+            <%= link_to "編集", edit_group_path(@group), class: "btn btn-sm btn-success" %>
+            <%= link_to "グループを削除する", group_destroy_all_path(@group), method: :delete,
                                   "data-confirm" => "本当に消しますか？", class: "btn btn-sm btn-success" %>
           <% elsif @group.end_users.include?(current_end_user) %>
-            <%= link_to 'グループを離れる', group_path(@group), method: :delete,
+            <%= link_to "グループを離れる", group_path(@group), method: :delete,
                                   "data-confirm" => "本当にグループを離れますか？", class: "btn btn-sm btn-danger" %>
           <% else %>
-            <%= link_to 'グループへ参加する', group_join_path(@group), class: "btn btn-sm btn-success" %>
+            <%= link_to "グループへ参加する", group_join_path(@group), class: "btn btn-sm btn-success" %>
           <% end %>
         </td>
       </tr>

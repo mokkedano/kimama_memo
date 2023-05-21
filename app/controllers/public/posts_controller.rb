@@ -45,6 +45,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comment = Comment.new
     @categories = @post.categories
+    @end_user = current_end_user
   end
 
 

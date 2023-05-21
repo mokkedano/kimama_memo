@@ -1,117 +1,66 @@
-<div class='container'>
+<div class="container">
   <div class="mypage">
     <h4>マイページ</h4>
   </div>
-
-  <div class='row mt-md-5'>
-    <div class='col-md-3'>
-      <%= image_tag @end_user.get_profile_image(150,150) %>
+  <div class="row mt-md-5">
 
 
-
-    <div class="nickname mt-md-4">
-      <div>
-        <p>＊メモ主</p>
-        <p>&emsp;<%= @end_user.nickname %></p>
-      </div>
-      <div class='mt-md-2'>
-        <p>＊自己紹介</p>
-        <p>&emsp;
-          <% if @end_user.self_introduction != "" %>
-            <%= @end_user.self_introduction %>
-          <% else %>
-            現在未設定です。
-          <% end %>
-        </p>
-      </div>
+    <div class="col-md-3">
+      <%= render "sidebar", end_user: @end_user %>
     </div>
 
-    <p>
-      <% if @end_user.nickname != "guest_end_user" %>
-        <%= link_to "プロフィール編集", end_users_information_edit_path %>
-      <% end %>
-    </p>
 
 
-    <div>
-        <ul>
-          <li><%= link_to "メモを書く", new_post_path %></li>
-          <li><%= link_to "メモ一覧", posts_path %></li>
-          <li><%= link_to "カテゴリ管理", categories_path %></li>
-          <li><%= link_to "いいねしたメモたち", favorite_index_path %></li>
-          <li><%= link_to "参加しているグループ", groups_path %></li>
-          <li>
-            <% if @end_user.nickname != "guest_end_user" %>
-              <%= link_to "退会する", unsubscribe_path %>
+    <div class="col-md-6 offset-md-1">
+      <div id="category_box">
+        <h6 style="font-size:15px;" class="mb-md-4"><i class="fas fa-tags"></i>&nbsp;最近メモをしたためたカテゴリ</h6>&emsp;
+        <% if @categories.present? %>
+          <% last_category = nil %>
+          <% @categories.each do |category| %>
+            <% if category != last_category %>
+              <span style="font-size:15px; margin:2px;">
+                <%= link_to category.name, posts_search_category_path(category_id: category.id), class: "btn btn-sm btn-outline-primary" %>
+              </span>
             <% end %>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-
-
-
-    <div class='col-md-6'>
-
-
-
-<div id="tag_box">
-  <p style="font-size:15px;">最近メモを作成したカテゴリ</p>
-    <% if @categories.present? %>
-      <!--last_tagという箱を作成-->
-      <% last_category = nil %>
-      <% @categories.each do |category| %>
-      <!--タグが被ってなければ、名前表示/タグ被ってたら何もせず-->
-        <% if category != last_category %>
-          <span style="font-size:15px; margin:2px;">
-            <%= link_to category.name, posts_search_category_path(category_id: category.id), class: "btn btn-sm btn-outline-primary" %>
-          </span>
+            <% last_category = category %>
+          <% end %>
+        <% else %>
+          <p>メモがありません。</p>
         <% end %>
-      <!--今取り出したタグをlast_tagに入れる-->
-        <% last_category = category %>
-      <% end %>
-    <% else %>
-      <p>メモがありません。</p>
-    <% end %>
+      </div>
+
+
+      <div class="mt-md-5">
+        <h6><i class="fas fa-pen"></i>&nbsp;最近したためたメモ</h6>
+        <% if @posts.exists? %>
+
+          <% @posts.each do |post| %>
+            <ul class="grid cs-style-1">
+              <li>
+                <figure>
+                  <%= image_tag post.get_image(500,400) %>
+                  <figcaption>
+                    <h3><%= post.title %></h3>
+                    <span>
+                      <%= post.categories.map(&:name).join(', ') %><br>
+                      ♥<%= post.favorites.count %>&emsp;<%= "#{post.comments.count} コメント" %>
+                    </span>
+                    <%= link_to "詳しく見る", post_path(post) %>
+                  </figcaption>
+                </figure>
+              </li>
+            </ul>
+          <% end %>
+
+        <% else %>
+        	<p>メモが 0 枚です。</p>
+        <% end %>
+      </div>
+    </div>
+
+
+  </div>
 </div>
 
 
-<% if @posts.exists? %>
-
-
-    <% @posts.each do |post| %>
-
-    <ul class="grid cs-style-1">
-      <li>
-        <figure>
-          <%= image_tag post.get_image(300,300) %>
-          <figcaption>
-            <h3><%= post.title %></h3>
-            <span><%= post.introduction.truncate(25) %></span>
-            <span><%= post.categories.map(&:name).join(', ') %></span>
-            <span><%= "#{post.comments.count} コメント" %></span>
-            <%= link_to "メモを詳しく見る", post_path(post) %>
-          </figcaption>
-        </figure>
-      </li>
-    </ul>
-
-  	<% end %>
-
-<% else %>
-	<h3>メモが 0 枚です。</h3>
-<% end %>
-
-
-
-</div>
-</div>
-
-
-
-</div>
-
-</div>
-</div>
-
+<div class="bg_pattern Paper_v2"></div>

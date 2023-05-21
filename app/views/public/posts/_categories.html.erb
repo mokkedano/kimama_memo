@@ -1,20 +1,21 @@
-<div id="tag_box">
-  <p style="font-size:15px;">既存のカテゴリ</p>
-    <% if categories.present? %>
-      <!--last_tagという箱を作成-->
-      <% last_category = nil %>
-      <% categories.each do |category| %>
-      <!--タグが被ってなければ、名前表示/タグ被ってたら何もせず-->
-        <% if category != last_category %>
-          <span style="font-size:15px; margin:2px;">
-            <%= link_to category.name + "(#{category.posts.where(end_user_id: current_end_user.id).count})",
-                posts_search_category_path(category_id: category.id), class: "btn btn-sm btn-outline-primary" %>
-          </span>
-        <% end %>
-      <!--今取り出したタグをlast_tagに入れる-->
-        <% last_category = category %>
-      <% end %>
-    <% else %>
-      <p>メモがありません。</p>
+<div id="category_box" style="text-align:center" class="mb-md-2">
+  <!--<h5 style="font-size:15px;">既存のカテゴリ</h5>-->
+  <span style="font-size:15px; margin:2px;">既存のカテゴリ&nbsp;<i class="fas fa-tags"></i>&emsp;
+  <% if categories.present? %>
+  <!--last_categoryという箱を作成-->
+  <% last_category = nil %>
+  <% categories.each do |category| %>
+  <!--カテゴリが被ってなければ名前表示する。カテゴリ被ってたら何もせず-->
+    <% if category != last_category %>
+      <!--<span style="font-size:15px; margin:2px;">-->
+        <%= link_to category.name + "(#{category.posts.where(end_user_id: current_end_user.id).count})",
+          posts_search_category_path(category_id: category.id), class: "btn btn-sm btn-outline-primary" %>
     <% end %>
+    <!--今取り出したカテゴリをlast_categoryに入れる-->
+    <% last_category = category %>
+  <% end %>
+  <% else %>
+    <p>メモがありません。</p>
+  <% end %>
+  </span>
 </div>

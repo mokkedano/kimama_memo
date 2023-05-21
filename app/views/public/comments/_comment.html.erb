@@ -1,14 +1,16 @@
 <% post.comments.each do |comment| %>
-  <p><%= image_tag comment.end_user.get_profile_image(100,100) %></p>
-  <%= comment.end_user.nickname %>
-  <%= comment.created_at.strftime('%Y/%m/%d %T') %><%= comment.comment %>
-  <% if comment.end_user == current_end_user %>
-    <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true,
-                                    "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>
-  <% end %>
-  <% if admin_signed_in? %>
-       <%= link_to "管理者削除", admin_end_user_comment_path(comment.post, comment), method: :delete,
-                        remote: true, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>
-  <% end %>
+  <p>
+    <%= image_tag comment.end_user.get_profile_image(50,50), class: "rounded-circle" %>
+    <%= comment.end_user.nickname %>&emsp;
+    <%= comment.created_at.strftime('%Y/%m/%d %T') %>&emsp;
+    <%= comment.comment %>&emsp;
+    <% if comment.end_user == current_end_user %>
+      <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true,
+                                      "data-confirm" => "本当に消しますか？", class: "btn btn-outline-danger btn-sm" %>
+    <% end %>
+    <% if admin_signed_in? %>
+         <%= link_to "管理者削除", admin_end_user_comment_path(comment.post, comment), method: :delete,
+                          remote: true, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>
+    <% end %>
+  </P>
 <% end %>
-
