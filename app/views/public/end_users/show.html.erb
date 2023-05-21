@@ -31,8 +31,8 @@
         <%= link_to "プロフィール編集", end_users_information_edit_path %>
       <% end %>
     </p>
-    
-    
+
+
     <div>
         <ul>
           <li><%= link_to "メモを書く", new_post_path %></li>
@@ -44,18 +44,16 @@
             <% if @end_user.nickname != "guest_end_user" %>
               <%= link_to "退会する", unsubscribe_path %>
             <% end %>
-          </li>
-        </ul>
-      </div>
-
-
+        </li>
+      </ul>
+    </div>
   </div>
 
 
 
 
     <div class='col-md-6'>
-      
+
 
 
 <div id="tag_box">
@@ -79,41 +77,34 @@
 </div>
 
 
-
-
 <% if @posts.exists? %>
-
-  <div class= "card">
-    <div class= "card-body">
 
 
     <% @posts.each do |post| %>
 
-        <%= link_to post_path(post) do %>
-          <%= image_tag post.get_image(100,100) %>
-    			<p><%= post.title %></p>
-    		<% end %>
+    <ul class="grid cs-style-1">
+      <li>
+        <figure>
+          <%= image_tag post.get_image(300,300) %>
+          <figcaption>
+            <h3><%= post.title %></h3>
+            <span><%= post.introduction.truncate(25) %></span>
+            <span><%= post.categories.map(&:name).join(', ') %></span>
+            <span><%= "#{post.comments.count} コメント" %></span>
+            <%= link_to "メモを詳しく見る", post_path(post) %>
+          </figcaption>
+        </figure>
+      </li>
+    </ul>
 
-  		  <p><%= post.introduction.truncate(25) %></p>
-
-
-        <!--投稿一覧画面で投稿に紐づくタグを表示-->
-        <%= post.categories.map(&:name).join(', ') %>
-
-
-  		  <!--いいね機能-->
-		    <div id="favorite_buttons_<%= post.id %>">
-  		    <%= render "public/favorites/favorite", post: post %>
-		    </div>
-		    <!--いいね機能 ここまで-->
-
-  		  <p><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></p>
   	<% end %>
 
 <% else %>
 	<h3>メモが 0 枚です。</h3>
 <% end %>
 
+
+
 </div>
 </div>
 
@@ -123,3 +114,4 @@
 
 </div>
 </div>
+
