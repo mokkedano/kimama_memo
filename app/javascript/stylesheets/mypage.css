@@ -102,12 +102,12 @@
 
 
 
+/*最近書いたメモの部分*/
 .memo_pin {
   text-align: center;
   color: #808080;
 }
 
-
-.card-deck {
-  display: flex;
+#memo_images {
+  float: left;
 }

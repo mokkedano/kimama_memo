@@ -1,18 +1,18 @@
-<h2>みんなのメモ</h2>
+<h3>みんなのメモ</h3>
 
 <% if params[:category_id] %>
-  <h3><%= @category.name %>のメモ 検索結果 (全<%= @all_posts_count %>枚)</h3>
+  <h4><%= @category.name %>のメモ 検索結果 (全<%= @all_posts_count %>枚)</h4>
 <% elsif %>
 <%# if params[:range] %>
-  <h3><%= params[:word] %>のメモ 検索結果 (全<%= @all_posts_count %>枚)</h3>
+  <h4><%= params[:word] %>のメモ 検索結果 (全<%= @all_posts_count %>枚)</h4>
 <% else %>
-  <h3>すべてのメモ (全<%= @all_posts_count %>枚)</h3>
+  <h4>すべてのメモ (全<%= @all_posts_count %>枚)</h4>
 <% end %>
 
 
 
 <div id="tag_box">
-  <p style="font-size:15px;">自分が登録したカテゴリで検索してみよう！</p>
+  <p style="font-size:15px;"><i class="fas fa-lightbulb"></i>自分が登録しているカテゴリで検索してみよう！</p>
     <% if @categories.present? %>
       <% last_category = nil %>
       <% @categories.each do |category| %>

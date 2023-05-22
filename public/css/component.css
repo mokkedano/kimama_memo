@@ -8,7 +8,8 @@
 
 .grid li {
 	display: inline-block;
-	width: 440px;
+	/*width: 440px;*/
+	width: 300px;
 	margin: 0;
 	padding: 20px;
 	text-align: left;
@@ -81,7 +82,8 @@
 }
 
 .cs-style-1 figcaption h3 {
-	margin-top: 70px;
+	/*margin-top: 70px;*/
+	margin-top: 20px;
 }
 
 .cs-style-1 figcaption span {

@@ -1,19 +1,55 @@
-<h3>カテゴリ一覧</h3>
+<div class="container">
+  <div class="row mt-md-5">
 
-<% if @categories.present?%>
-  <% last_category = nil %>
 
-  <% @categories.each do |category| %>
+    <div class="col-md-3">
+      <%= render "public/end_users/sidebar", end_user: @end_user %>
+    </div>
 
-     <% if category != last_category %>
-       <span><%= category.name %></span>
-       <%= link_to "編集", edit_category_path(category), class: "btn btn-success" %>
-     <% end %>
-     <% last_category = category %>
-  <% end %>
-<% else %>
-  <p>登録されたカテゴリがありません。</p>
-<% end %>
+
+    <div class="col-md-6 offset-md-1">
+      <div class="mb-md-5">
+        <h3>カテゴリ一覧</h3>
+      </div>
+
+      <% if @categories.present?%>
+        <% last_category = nil %>
+        <table class="table table-bordered table-sm">
+          <thead>
+            <tr>
+              <td>カテゴリ名</td>
+              <th></th>
+            </tr>
+          </thead>
+          <% @categories.each do |category| %>
+            <% if category != last_category %>
+            <tbody>
+              <tr>
+                <td valign="middle"><%= category.name %></td>
+                <td align="middle">
+                  <%= link_to edit_category_path(category), class: "btn-flat-simple" do %>
+                    <i class="fa fa-caret-right"></i>&nbsp;編集
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+            <% end %>
+            <% last_category = category %>
+          <% end %>
+        </table>
+      <% else %>
+        <p>登録されたカテゴリがありません。</p>
+      <% end %>
+    </div>
+
+
+    <div class="col-md-2"></div>
+  </div>
+</div>
+
+
+
+
 
 
 
@@ -22,5 +58,4 @@
   <%#= f.text_field :name, placeholder: "20文字以内" %>
   <%#= f.submit "新規登録", class: "btn btn-primary" %>
 <%# end %>
-
 

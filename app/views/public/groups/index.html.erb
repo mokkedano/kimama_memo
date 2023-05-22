@@ -1,14 +1,29 @@
-<div class='col-md-8 offset-md-1'>
-  <div><%=link_to "グループを作成する", new_group_path %></div>
+<div class="container">
+  <div class="row mt-md-5">
 
 
-<h5>参加しているグループ一覧</h5>
+    <div class="col-md-3">
+      <%= render "public/end_users/sidebar", end_user: @end_user %>
+    </div>
 
-<% if @groups.count == 0 %>
-  <%= @groups_none %>
-<% else %>
 
-  <%= render "index", groups: @groups %>
+    <div class="col-md-8 offset-md-1">
+      <div class="mb-md-0">
+        <table class="table table-borderless">
+          <tr>
+            <td class="group_name">参加しているグループ一覧</td>
+            <td align="center"><%=link_to "グループを作成する", new_group_path, class: "btn-square-shadow" %></td>
+          </tr>
+        </table>
+      </div>
 
-<% end %>
+      <% if @groups.count == 0 %>
+        <%= @groups_none %>
+      <% else %>
+        <%= render "index", groups: @groups %>
+      <% end %>
+    </div>
+
+
+  </div>
 </div>

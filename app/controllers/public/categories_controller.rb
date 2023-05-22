@@ -1,10 +1,11 @@
 class Public::CategoriesController < ApplicationController
   before_action :authenticate_end_user!
+  before_action :set_end_user, only: [:index, :edit]
 
 
   def index
     @category = Category.new
-    @categories = current_end_user.categories
+    @categories = current_end_user.categories.order('created_at DESC')
   end
 
 
@@ -39,6 +40,11 @@ class Public::CategoriesController < ApplicationController
   private
   def category_params
     params.require(:category).permit(:name)
+  end
+
+
+  def set_end_user
+    @end_user = current_end_user
   end
 
 

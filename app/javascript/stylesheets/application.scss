@@ -13,6 +13,7 @@
   background-color: #fff;
   z-index: -1;
 }
+
 .Paper_v2 {
   background-image:
     repeating-linear-gradient(to bottom,
@@ -45,4 +46,47 @@
 // カード (新規投稿・編集フォーム) 部分
 #card_form {
   background-color: #f9fcff;
+}
+
+
+
+/*カテゴリ一覧のボタン部分*/
+.btn-flat-simple {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #00BCD4;
+  background: #ECECEC;
+  transition: .4s;
+}
+
+.btn-flat-simple:hover {
+  background: #00bcd4;
+  color: white;
+}
+
+
+
+// グループ新規作成ボタン
+.btn-square-shadow {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #a3d1ff;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+}
+.btn-square-shadow:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+  border-bottom: none;
+}
+
+.group_name {
+  font-size: 18px;
 }

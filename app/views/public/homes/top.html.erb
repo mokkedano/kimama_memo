@@ -1,4 +1,33 @@
-<h1>topページ</h1>
+<h1>気ままメモ</h1>
+
+
+<div>
+  <h6><i class="fas fa-pen"></i>&nbsp;新着メモ</h6>
+  <% if @posts.exists? %>
+
+    <% @posts.each do |post| %>
+      <ul class="grid cs-style-1" id="post_images">
+        <li>
+          <figure class="memo_pin">
+            <i class="fas fa-thumbtack"></i>
+            <%= image_tag post.get_image(500,400) %>
+            <figcaption>
+              <h3><%= post.title.truncate(10) %></h3>
+              <span>
+                <%= post.categories.map(&:name).join(', ').truncate(12) %><br>
+                <i class="fas fa-heart"></i>&nbsp;<%= post.favorites.count %>&emsp;<%= "#{post.comments.count} コメント" %>
+              </span>
+              <%= link_to "詳しく見る", post_path(post) %>
+            </figcaption>
+          </figure>
+        </li>
+      </ul>
+    <% end %>
+
+  <% else %>
+  	<p>メモが 0 枚です。</p>
+  <% end %>
+</div>
 
 
 <p><%= link_to "みんなの書いたメモを検索する >>", search_path %></p>

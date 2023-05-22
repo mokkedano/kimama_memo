@@ -10,7 +10,7 @@ class Public::EndUsersController < ApplicationController
     # @point = @end_user.passive_points.all
     @categories = @end_user.categories.order('created_at DESC').limit(15)
     # @posts_category = @end_user.categories.order('created_at DESC').limit(15)
-    @posts = @end_user.posts.order('id DESC').limit(4)
+    @posts = @end_user.posts.order('id DESC').limit(6)
   end
 
 
@@ -41,8 +41,7 @@ class Public::EndUsersController < ApplicationController
 
   def favorites
     favorites = Favorite.where(end_user_id: @end_user.id).pluck(:post_id)
-    @favorite_posts = Post.find(favorites)
-    # @post = Post.find(params[:id])
+    @posts = Post.find(favorites)
   end
 
 

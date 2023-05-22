@@ -5,6 +5,7 @@
   <div class="row mt-md-5">
 
 
+
     <div class="col-md-3">
       <%= render "sidebar", end_user: @end_user %>
     </div>
@@ -13,7 +14,7 @@
 
     <div class="col-md-8 offset-md-1 mt-md-4">
       <div id="category_box">
-        <h6 style="font-size:15px;" class="mb-md-4"><i class="fas fa-tags"></i>&nbsp;最近メモをしたためたカテゴリ</h6>&emsp;
+        <h5 style="font-size:15px;" class="mb-md-4"><i class="fas fa-tags"></i>&nbsp;最近メモを登録したカテゴリ</h5>&emsp;
         <% if @categories.present? %>
           <% last_category = nil %>
           <% @categories.each do |category| %>
@@ -31,20 +32,21 @@
 
 
       <div class="mt-md-5">
-        <h6><i class="fas fa-pen"></i>&nbsp;最近したためたメモ</h6>
+        <h5><i class="fas fa-pen"></i>&nbsp;最近したためたメモ</h5>
+        <%#= render "public/posts/index_hover", posts: @posts %>
         <% if @posts.exists? %>
 
           <% @posts.each do |post| %>
-            <ul class="grid cs-style-1">
+            <ul class="grid cs-style-1" id="memo_images">
               <li>
                 <figure class="memo_pin">
                   <i class="fas fa-thumbtack"></i>
-                  <%= image_tag post.get_image(500,400) %>
+                  <%= image_tag post.get_image(400,300) %>
                   <figcaption>
-                    <h3><%= post.title %></h3>
+                    <h3><%= post.title.truncate(10) %></h3>
                     <span>
-                      <%= post.categories.map(&:name).join(', ') %><br>
-                      ♥<%= post.favorites.count %>&emsp;<%= "#{post.comments.count} コメント" %>
+                      <%= post.categories.map(&:name).join(', ').truncate(12) %><br>
+                      <i class="fas fa-heart"></i>&nbsp;<%= post.favorites.count %>&emsp;<%= "#{post.comments.count} コメント" %>
                     </span>
                     <%= link_to "詳しく見る", post_path(post) %>
                   </figcaption>
@@ -62,6 +64,3 @@
 
   </div>
 </div>
-
-
-<div class="bg_pattern Paper_v2"></div>

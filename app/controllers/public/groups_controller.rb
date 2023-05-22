@@ -14,7 +14,6 @@ class Public::GroupsController < ApplicationController
     @group.owner_id = current_end_user.id
     @group.end_users << current_end_user
     if @group.save
-      # binding.pry
       redirect_to groups_path, notice: "グループを作成しました！"
     else
       render :new
@@ -31,13 +30,8 @@ class Public::GroupsController < ApplicationController
 
   def index
     @groups = current_end_user.groups
-    #@group_joining = GroupUser.where(end_user_id: current_end_user.id)
     @groups_none = "グループに参加していません。"
-    #binding.pry
-    # @groups = @group_joining
-
-    # @groups = Group.includes(:group_users).where(group_users: {end_user_id: params[:end_user_id] })
-
+    @end_user = current_end_user
   end
 
 
