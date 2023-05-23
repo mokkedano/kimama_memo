@@ -45,9 +45,8 @@ class Public::PostsController < ApplicationController
 
   def show
     @comment = Comment.new
-    # @categories = @post.categories
-    @categories = @post.categories.includes(:post_category_relations).where(post_category_relations: {end_user_id: params[:end_user_id] })
-  end #@group_joining = GroupUser.where(end_user_id: current_end_user.id)
+    @categories = @post.categories
+  end
 
 
   def edit

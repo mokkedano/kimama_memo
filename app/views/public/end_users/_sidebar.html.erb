@@ -19,17 +19,17 @@
     </div>
   </div>
 
-  <div style="text-align:center;" class="setting">
+  <div style="text-align:center;" class="setting mt-md-5">
   <p>
     <% if end_user.nickname != "guest_end_user" %>
-      <i class="fas fa-cog setting_btn"></i>&emsp;
-      <%= link_to "プロフィール編集", end_users_information_edit_path %>&emsp;
-      <i class="fas fa-cog setting_btn"></i>
+      <i class="fas fa-cog setting_btn"></i>&nbsp;
+      <%= link_to "プロフィール編集", end_users_information_edit_path %>
+      <!--<i class="fas fa-cog setting_btn"></i>-->
     <% end %>
   </p>
   </div>
 
-  <div class="mt-md-5">
+  <div class="mt-md-5 pt-md-5">
     <ul class="side_menu">
       <li class="menu"><%= link_to "メモを書く", new_post_path %></li>
       <li class="menu"><%= link_to "メモ一覧", posts_path %></li>

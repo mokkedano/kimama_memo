@@ -4,9 +4,8 @@ class Public::ChatMessagesController < ApplicationController
 
   def index
     @group = Group.find(params[:group_id])
-    # @messages = Group.find(params[:group_id]).chat_message
     @message = ChatMessage.new
-    @messages = ChatMessage.where(group: @group)
+    @messages = ChatMessage.where(group: @group).limit(30)
     @end_user = current_end_user
   end
 
@@ -35,7 +34,6 @@ class Public::ChatMessagesController < ApplicationController
   private
   def message_params
     params.require(:chat_message).permit(:message, :group_id).merge(end_user_id: current_end_user.id)
-    # params.require(:chat_message).permit(:message, :group_id)
   end
 
 

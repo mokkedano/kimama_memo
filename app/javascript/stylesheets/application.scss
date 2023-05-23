@@ -113,14 +113,15 @@
 
 
 // グループチャット画面のメッセージ部分
-.box8 {
+.chat_box {
     padding: 0.5em 1em;
     margin: 10px 0;
     color: #232323;
     background: #fff9f9;
     border-left: solid 8px #ffe5e5;
 }
-.box8 p {
+
+.chat_box p {
     margin: 0;
     padding: 0;
 }
@@ -128,3 +129,5 @@
 .chat_end_user_image {
   margin-bottom: 0;
 }
+
+

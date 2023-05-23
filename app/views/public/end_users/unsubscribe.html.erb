@@ -1,11 +1,26 @@
-<h2>本当に退会しますか？</h2>
-
-<p>
-  退会すると、全てのサービスがご利用いただけなくなります。<br>
-  また、会員登録情報やこれまでの投稿、作成したメモ等も閲覧できなくなります。<br>
-  退会する場合は、「退会する」をクリックしてください。
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center mt-5">
 
 
-<%= link_to "退会しない", my_page_path %>
-<%= link_to "退会する", withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？" } %>
+    <div class="mb-md-5">
+      <h2>本当に退会しますか？</h2>
+    </div>
+
+    <div class="mt-md-3">
+      <p>
+        退会すると、全てのサービスがご利用いただけなくなります。<br>
+        また、登録情報やこれまでの投稿、作成したメモ等も閲覧できなくなります。<br>
+        退会する場合は、「退会する」をクリックしてください。
+      </p>
+    </div>
+
+    <div class="mt-md-5 pt-md-3">
+      <%= link_to "退会しない", my_page_path, class: "btn btn-success" %>&emsp;
+      <%= link_to "退会する", withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？" }, class: "btn btn-danger" %>
+    </div>
+
+
+    </div>
+  </div>
+</div>
