@@ -1,4 +1,23 @@
-<div class='col-md-8 offset-md-1'>
-  <div><%=link_to "グループを作成する", new_group_path %></div>
-<h2>グループ一覧</h2>
-   <%= render "index", groups: @groups %>
+<div class="container">
+  <div class="row mt-md-5">
+
+
+    <div class="col-md-3">
+      <%= render "public/end_users/sidebar", end_user: @end_user %>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+      <div class="mb-md-0">
+        <table class="table table-borderless">
+          <tr>
+            <td class="group_name">グループ一覧</td>
+            <td align="center"><%=link_to "グループを作成する", new_group_path, class: "btn-square-shadow" %></td>
+          </tr>
+        </table>
+      </div>
+      <%= render "index", groups: @groups %>
+    </div>
+
+
+  </div>
+</div>

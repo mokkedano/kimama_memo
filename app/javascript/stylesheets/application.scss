@@ -50,7 +50,7 @@
 
 
 
-/*カテゴリ一覧のボタン部分*/
+/*カテゴリ一覧・グループ一覧(全て&参加済)の編集ボタン部分*/
 .btn-flat-simple {
   position: relative;
   display: inline-block;
@@ -87,6 +87,44 @@
   border-bottom: none;
 }
 
+
+
+// 全グループ一覧画面・参加済グループ一覧画面
 .group_name {
   font-size: 18px;
+}
+
+
+
+// グループ情報(詳細)画面
+#group_image_pin {
+  text-align: center;
+  color: #808080;
+}
+
+#group_member {
+  padding-left: 0;
+}
+
+#group_member_list {
+  list-style: none;
+}
+
+
+
+// グループチャット画面のメッセージ部分
+.box8 {
+    padding: 0.5em 1em;
+    margin: 10px 0;
+    color: #232323;
+    background: #fff9f9;
+    border-left: solid 8px #ffe5e5;
+}
+.box8 p {
+    margin: 0;
+    padding: 0;
+}
+
+.chat_end_user_image {
+  margin-bottom: 0;
 }

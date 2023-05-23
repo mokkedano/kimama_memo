@@ -1,53 +1,69 @@
-<div class="col-md-12">
-  <h5>グループ情報</h5>
-  <table class="table table-hover table-inverse">
-   <thead>
-      <tr>
-        <th></th>
-        <th>グループ名</th>
-        <th>紹介文</th>
-        <th>メンバー数</th>
-        <th colspan="2">メンバー</th>
-        <th></th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= image_tag @group.get_group_image(100,100) %></td>
-        <td><%= @group.name %></td>
-        <td>
-          <% if @group.introduction != "" %>
-            <%= @group.introduction %>
-          <% else %>
-            現在未設定です。自由に書いてみましょう！
-          <% end %>
-        </td>
-        <td><%= @group.end_users.count %></td>
-        <td>
-          <% @group.end_users.each do |member| %>
-            <%= image_tag member.get_profile_image(50,50) %>
-            <%= member.nickname %>
-          <% end %>
-        </td>
-        <td>
-          <% if @group.end_users.include?(current_end_user) %>
-            <%= link_to "チャットページへ", group_chat_messages_path(@group), class: "btn btn-sm btn-success" %>
-          <% end %>
-        </td>
-        <td>
-          <% if @group.owner_id == current_end_user.id %>
-            <%= link_to "編集", edit_group_path(@group), class: "btn btn-sm btn-success" %>
-            <%= link_to "グループを削除する", group_destroy_all_path(@group), method: :delete,
-                                  "data-confirm" => "本当に消しますか？", class: "btn btn-sm btn-success" %>
-          <% elsif @group.end_users.include?(current_end_user) %>
-            <%= link_to "グループを離れる", group_path(@group), method: :delete,
-                                  "data-confirm" => "本当にグループを離れますか？", class: "btn btn-sm btn-danger" %>
-          <% else %>
-            <%= link_to "グループへ参加する", group_join_path(@group), class: "btn btn-sm btn-success" %>
-          <% end %>
-        </td>
-      </tr>
-  </tbody>
-  </table>
+<div class="container">
+  <div class="row mt-md-5">
+
+
+    <div class="col-md-3">
+      <%= render "public/end_users/sidebar", end_user: @end_user %>
+    </div>
+
+
+    <div class="col-md-8 offset-md-1">
+      <h4>グループ情報</h4>
+
+      <div class="row mt-md-5">
+        <div class="col-md-5 mb-md-5" id="group_image_pin">
+          <i class="fas fa-thumbtack"></i>
+          <div><%= image_tag @group.get_group_image(250,250) %></div>
+        </div>
+        <div class="col-md-7 mt-md-5">
+          <div style="vertical-align:middle;" class="mt-md-3">
+            <% if @group.owner_id == current_end_user.id %>
+              <%= link_to "編集", edit_group_path(@group), class: "btn btn-sm btn-outline-secondary" %>
+            <% elsif @group.end_users.include?(current_end_user) %>
+              <%= link_to "グループを離れる", group_path(@group), method: :delete,
+                                    "data-confirm" => "本当にグループを離れますか？", class: "btn btn-sm btn-outline-danger" %>
+            <% else %>
+              <%= link_to "グループへ参加する", group_join_path(@group), class: "btn btn-sm btn-success" %>
+            <% end %>
+          </div>
+          <div style="vertical-align:middle;" class="mt-md-3">
+            <% if @group.end_users.include?(current_end_user) %>
+              <%= link_to "チャットページへ", group_chat_messages_path(@group), class: "btn btn-info" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="mt-md-4">
+            <h5>グループ名</h5>
+            <p>&emsp;<%= @group.name %></p>
+          </div>
+          <div class="mt-md-4">
+            <h5>紹介文</h5>
+            <P>&emsp;
+              <% if @group.introduction != "" %>
+                <%= @group.introduction %>
+              <% else %>
+                グループの紹介文を自由に設定してみましょう！
+              <% end %>
+            </P>
+          </div>
+          <div class="mt-md-5">
+            <h5 class="mb-md-3">メンバー数：<%= @group.end_users.count %></h5>
+            <ul class="ml-md-3" id="group_member">
+              <% @group.end_users.each do |member| %>
+                <li id="group_member_list">
+                  <%= image_tag member.get_profile_image(50,50), class: "rounded-circle" %>&nbsp;
+                  <%= member.nickname %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>

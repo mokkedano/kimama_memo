@@ -1,4 +1,5 @@
 class Public::ChatMessagesController < ApplicationController
+  before_action :authenticate_end_user!
 
 
   def index
@@ -6,6 +7,7 @@ class Public::ChatMessagesController < ApplicationController
     # @messages = Group.find(params[:group_id]).chat_message
     @message = ChatMessage.new
     @messages = ChatMessage.where(group: @group)
+    @end_user = current_end_user
   end
 
 

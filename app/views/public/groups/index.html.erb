@@ -6,7 +6,6 @@
       <%= render "public/end_users/sidebar", end_user: @end_user %>
     </div>
 
-
     <div class="col-md-8 offset-md-1">
       <div class="mb-md-0">
         <table class="table table-borderless">
@@ -16,7 +15,6 @@
           </tr>
         </table>
       </div>
-
       <% if @groups.count == 0 %>
         <%= @groups_none %>
       <% else %>

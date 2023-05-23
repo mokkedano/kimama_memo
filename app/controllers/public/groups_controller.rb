@@ -1,6 +1,7 @@
 class Public::GroupsController < ApplicationController
   before_action :authenticate_end_user!
   before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_end_user, only: [:new, :index, :show, :edit, :group_all]
   before_action :is_matchig_owner_user, only: [:edit, :update]
 
 
@@ -31,7 +32,6 @@ class Public::GroupsController < ApplicationController
   def index
     @groups = current_end_user.groups
     @groups_none = "グループに参加していません。"
-    @end_user = current_end_user
   end
 
 
@@ -82,6 +82,11 @@ class Public::GroupsController < ApplicationController
 
   def set_group
     @group = Group.find(params[:id])
+  end
+
+
+  def set_end_user
+    @end_user = current_end_user
   end
 
 
