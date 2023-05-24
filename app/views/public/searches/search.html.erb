@@ -1,71 +1,76 @@
-<h3>みんなのメモ</h3>
-
-<% if params[:category_id] %>
-  <h4><%= @category.name %>のメモ 検索結果 (全<%= @all_posts_count %>枚)</h4>
-<% elsif %>
-<%# if params[:range] %>
-  <h4><%= params[:word] %>のメモ 検索結果 (全<%= @all_posts_count %>枚)</h4>
-<% else %>
-  <h4>すべてのメモ (全<%= @all_posts_count %>枚)</h4>
-<% end %>
+<div class="container">
+  <div class="row mt-md-5">
 
 
 
-<div id="tag_box">
-  <p style="font-size:15px;"><i class="fas fa-lightbulb"></i>自分が登録しているカテゴリで検索してみよう！</p>
-    <% if @categories.present? %>
-      <% last_category = nil %>
-      <% @categories.each do |category| %>
-        <% if category != last_category %>
-          <span style="font-size:15px; margin:2px;">
-            <%= link_to category.name, search_path(category_id: category.id), class: "btn btn-sm btn-outline-primary" %>
-          </span>
+    <div class="col-md-3">
+      <%= render "public/end_users/sidebar", end_user: @end_user %>
+    </div>
+
+
+
+    <div class="col-md-8 offset-md-1">
+      <div class="mb-md-5">
+        <h3>みんなのメモ</h3>
+      </div>
+
+      <div>
+        <% if params[:category_id] %>
+          <h4>「<%= @category.name %>」のメモ 検索結果 (全<%= @all_posts_count %>枚)</h4>
+        <% elsif %>
+        <%# if params[:range] %>
+          <h4>「<%= params[:word] %>」のメモ 検索結果 (全<%= @all_posts_count %>枚)</h4>
+        <% else %>
+          <h4>すべてのメモ (全<%= @all_posts_count %>枚)</h4>
         <% end %>
-        <% last_category = category %>
-      <% end %>
-    <% else %>
-      <p>登録しているカテゴリがありません。</p>
-    <% end %>
-</div>
+      </div>
+
+      <div id="tag_box">
+        <p style="font-size:15px;"><i class="fas fa-lightbulb"></i>自分が登録しているカテゴリで検索してみよう！</p>
+          <% if @categories.present? %>
+            <% last_category = nil %>
+            <% @categories.each do |category| %>
+              <% if category != last_category %>
+                <span style="font-size:15px; margin:2px;">
+                  <%= link_to category.name, search_path(category_id: category.id), class: "btn btn-sm btn-outline-primary" %>
+                </span>
+              <% end %>
+              <% last_category = category %>
+            <% end %>
+          <% else %>
+            <p>登録しているカテゴリがありません。</p>
+          <% end %>
+      </div>
+
+      <div>
+      <% if @posts.exists? %>
+
+        <% @posts.each do |post| %>
+          <ul class="grid cs-style-1" id="post_images">
+            <li>
+              <figure class="memo_pin">
+                <i class="fas fa-thumbtack"></i>
+                <%= image_tag post.get_image(500,400) %>
+                <figcaption>
+                  <h3><%= post.title.truncate(10) %></h3>
+                  <span>
+                    <%= post.categories.map(&:name).join(', ').truncate(12) %><br>
+                    <i class="fas fa-heart"></i>&nbsp;<%= post.favorites.count %>&emsp;<%= "#{post.comments.count} コメント" %>
+                  </span>
+                  <%= link_to "詳しく見る", post_path(post) %>
+                </figcaption>
+              </figure>
+            </li>
+          </ul>
+        <% end %>
+
+        <% else %>
+        	<p>メモが 0 枚です。</p>
+        <% end %>
+      </div>
+   </div>
 
 
-
-
-
-
-
-<div class= "card">
-  <div class= "card-body">
-
-  <% if @posts.exists? %>
-
-    <% @posts.each do |post| %>
-
-        <%= link_to post_path(post) do %>
-          <%= image_tag post.get_image(100,100) %>
-    			<p><%= post.title %></p>
-    		<% end %>
-
-  		  <p><%= post.introduction.truncate(25) %></p>
-
-
-        <!--投稿一覧画面で投稿に紐づくタグを表示-->
-        <%= post.categories.map(&:name).join(', ') %>
-
-
-  		  <!--いいね機能-->
-		    <div id="favorite_buttons_<%= post.id %>">
-  		    <%= render "public/favorites/favorite", post: post %>
-		    </div>
-		    <!--いいね機能 ここまで-->
-
-  		  <p><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></p>
-  	<% end %>
-
-  <% else %>
-  	<h3>メモが 0 枚です。</h3>
-  <% end %>
 
   </div>
 </div>
-

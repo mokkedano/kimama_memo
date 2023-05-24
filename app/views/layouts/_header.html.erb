@@ -1,9 +1,11 @@
 <header class="shadow-sm">
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#fcfcfc;">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#fafdff;">
 
     <div class="container">
       <div>
-        <%= link_to "気ままメモ", root_path, class: 'logo' %>
+        <%= link_to root_path do %>
+          <%= image_tag 'logo.jpg', size: '200x120' %>
+        <% end %>
       </div>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"

@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
 
   # 会員側
-  devise_for :end_users, controllers: {
+  # devise_for :end_users, controllers: {
+  devise_for :end_users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
@@ -26,7 +27,6 @@ Rails.application.routes.draw do
     get "/end_users/favorites" => "end_users#favorites", as: "favorite_index"
 
     # posts コントローラー
-    # get "/posts/memo" => "posts#memo_index", as: "memo"
     get "posts/search_category"=>"posts#search_category"
     resources :posts do
       resources :comments, only: [:create, :destroy]

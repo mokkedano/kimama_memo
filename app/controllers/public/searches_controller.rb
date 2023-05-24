@@ -3,7 +3,7 @@ class Public::SearchesController < ApplicationController
 
 
   def search
-    @posts= Post.all
+    @posts= Post.all.order('id DESC').limit(20)
     all_posts = @posts
 
     # タグ検索に関する記述
@@ -27,48 +27,9 @@ class Public::SearchesController < ApplicationController
     end
     @categories = current_end_user.categories.order('created_at DESC')
     @all_posts_count = all_posts.count
-
-
+    @end_user = current_end_user
   end
 
+
 end
-
-
-
-
-
-    # キーワード検索とカテゴリ検索を両立させたくて記述したコード
-    # @posts= Post.all
-    # @categories = current_end_user.categories
-    # @posts = @posts.where("title LIKE(?) or introduction LIKE(?)", "%#{params[:word]}%","%#{params[:word]}%") if params[:word].present?
-    # #もしカテゴリ検索したら、post_idsにカテゴリを持ったidをまとめてそのidで検索
-    # if params[:category_ids].present?
-    #   post_ids = []
-    #   params[:category_ids].each do |key, value|
-    #     if value == "1"
-    #       Category.find_by(name: key).posts.each do |p|
-    #         post_ids << p.id
-    #       end
-    #     end
-    #   end
-    #   post_ids = post_ids.uniq
-    #   #キーワードとカテゴリのAND検索
-    #   @posts = @posts.where(id: post_ids) if post_ids.present?
-    # end
-
-
-
- #   @posts = Post.all
-  #   if params[:category_ids]
-  #     @posts = []
-  #     params[:category_ids].each do |key, value|
-  #       if value == "1"
-  #         category_posts = Category.find_by(name: key).posts
-  #         @posts = @posts.empty? ? category_posts : @posts & category_posts
-  #       end
-  #     end
-  #   end
-  # end
-
-
 
