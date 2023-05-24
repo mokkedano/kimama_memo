@@ -1,0 +1,46 @@
+<header class="shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#fcfcfc;">
+
+    <div class="container">
+      <div>
+        <%= link_to "気ままメモ", root_path, class: 'logo' %>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <% if admin_signed_in? %>
+         <ul class="navbar-nav">
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
+          </li>
+        <% elsif end_user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "マイページ", my_page_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "グループ", group_all_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'ゲストログイン（おためし用）', end_users_guest_sign_in_path, method: :post, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "新規登録", new_end_user_registration_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログイン", new_end_user_session_path, class: 'nav-link text-dark' %>
+          </li>
+           </ul>
+        <% end %>
+      </div>
+    </div>
+
+  </nav>
+</header>

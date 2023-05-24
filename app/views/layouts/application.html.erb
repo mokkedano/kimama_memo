@@ -21,43 +21,13 @@
   </head>
 
   <body>
-    <header>
-      <% if admin_signed_in? %>
-        <li>
-          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-        </li>
-      <% elsif end_user_signed_in? %>
-        <li>
-          <%= link_to "マイページ", my_page_path %>
-        </li>
-        <li>
-          <%= link_to "グループ", group_all_path %>
-        </li>
-        <li>
-          <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
-        </li>
-        <li>
-          <%= render "public/searches/search" %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to 'ゲストログイン（おためし用）', end_users_guest_sign_in_path, method: :post %>
-        </li>
-        <li>
-          <%= link_to "新規登録", new_end_user_registration_path %>
-        </li>
-        <li>
-          <%= link_to "ログイン", new_end_user_session_path %>
-        </li>
-      <% end %>
-    </header>
+    <%= render "layouts/header" %>
 
     <main>
       <div class="bg_pattern Paper_v2"></div>
       <p><%= flash[:notice] %></p>
       <%= yield %>
     </main>
-
 
   </body>
 </html>
