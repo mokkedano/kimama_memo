@@ -43,14 +43,13 @@
       rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px);
 }
 
-p, h2, h3, h4, h5, li {
+
+
+// 全体のフォント
+p, h2, h3, h4, h5, li, .form, table {
   font-family: 'Kaisei Opti', serif;
 }
 
-
-// .headline {
-//   font-family: 'New Tegomin', serif;
-// }
 
 
 // ヘッダー部分
@@ -60,6 +59,33 @@ p, h2, h3, h4, h5, li {
 
 .search_glass {
   color: #808080;
+}
+
+
+
+// TOP画面
+#post_images {
+  float: left;
+}
+
+.btn-circle-border-double {
+  display: inline-block;
+  text-decoration: none;
+  color: #668ad8;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  border-radius: 50%;
+  border: double 4px #668ad8;
+  text-align: center;
+  overflow: hidden;
+  transition: .6s;
+  font-size: 20px;
+}
+
+.btn-circle-border-double:hover {
+  -webkit-transform: rotateY(360deg);
+  transform: rotateY(360deg);
 }
 
 

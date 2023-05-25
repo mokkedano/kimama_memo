@@ -2,9 +2,9 @@
   <div class="search_form" id="form1">
     <%= form_with url: search_path, local: true, method: :get do |f| %>
     <div>
-      <%= f.text_field :word, size: "50", id: "sbox" %>
-      <%= f.select :range, options_for_select([["メモ",'Post'], ["カテゴリ",'Category']]), id: "sbox2" %>
-      <%= f.submit "検索", class: "btn btn-info", id: "sbtn" %>
+      <%= f.text_field :word, placeholder: "検索ワードをここへ入力してください", size: "65", class: "form" %>
+      <%= f.select :range, options_for_select([["メモ",'Post'], ["カテゴリ",'Category']]) %>
+      <%= f.submit "検索", class: "btn btn-info form" %>
     </div>
     <% end %>
   </div>
