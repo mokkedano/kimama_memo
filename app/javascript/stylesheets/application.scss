@@ -1,5 +1,7 @@
 @use '~bootstrap/scss/bootstrap';
 @use '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti&family=New+Tegomin&family=Tsukimi+Rounded&display=swap');
+
 
 
 
@@ -39,6 +41,25 @@
       rgba(0, 0, 0, 0.04) 104px,  rgba(0, 0, 0, 0.04) 104px,
       transparent 105px,  transparent 129px,
       rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px);
+}
+
+p, h2, h3, h4, h5, li {
+  font-family: 'Kaisei Opti', serif;
+}
+
+
+// .headline {
+//   font-family: 'New Tegomin', serif;
+// }
+
+
+// ヘッダー部分
+.nav-item {
+  list-style: none;
+}
+
+.search_glass {
+  color: #808080;
 }
 
 
@@ -131,22 +152,3 @@
 }
 
 
-
-// .navbar-nav {
-  // padding-right: 0;
-//   // text-align: right;
-//   display: flex;
-//   justify-content: flex-end;
-//   align-items: center;
-//   list-style: none;
-// }
-
-
-// ヘッダー部分
-.nav-item {
-  list-style: none;
-}
-
-// .logo {
-//   margin-right: auto;
-// }

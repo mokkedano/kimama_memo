@@ -1,64 +1,64 @@
 <div class="container">
+
+
   <div class="row mt-md-5">
-
-
     <div class="col-md-12">
       <div class="mb-md-5">
-<h2> ようこそ 「気ままメモ」 へ！ </h2>
-<p>
-「気ままメモ」は、日々の生活の中のちょっとメモしておきたい事柄を、自由気ままに記録できるサービスです！
-</p>
+        <h2 style="text-align:center;"> ようこそ 「気ままメモ」 へ！ </h2>
+        <p class="mt-md-5" style="text-align:center;">
+          「気ままメモ」は、日々の生活の中のちょっとメモしておきたい事柄を、自由気ままに記録できるサービスです！
+        </p>
+        <div class="mt-md-4" style="text-align:center;">
+          <p>
+          「貰い物のお菓子とても美味しかったな。今度自分でも買いたいからメモしておこう。」<br>
+          「気まぐれに入ったお店だけれど、この料理とても好みの味だ。お店を忘れずに覚えておこう。」<br>
+          「この本気になる！書名をひかえておいて、時間がある時にゆっくり読んでみよう。」・・・などなど
+          </p>
+        </div>
+        <div class="mt-md-5" style="text-align:center;">
+          <p>
+            日常の中の忘れずに覚えていたい事を、あなたも自由にメモしてみましょう。
+          </p>
+          <h3 class="mt-md-4"><%= link_to "メモを書いてみる", new_end_user_registration_path %></h3>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
-<p>
-「貰い物のお菓子とても美味しかったな。今度自分でも買いたいからメモしておこう。」<br>
-「気まぐれに入ったお店だけれど、この料理とても好みの味だ。お店を忘れずに覚えておこう。」<br>
-「この本気になる！書名をひかえておいて、時間がある時にゆっくり読んでみよう。」・・・などなど
-</p>
-<p>
-日常の中の忘れずに覚えていたい事を、あなたも自由にメモしてみましょう。
-</p>
-<p><%= link_to "メモを書いてみる", new_end_user_registration_path %></p>
-</div>
+  <div class="row mt-md-5 pt-md-3">
+    <div class="col-md-12">
+      <h4><i class="fas fa-pen"></i>&nbsp;みんなの新着メモ</h4>
+      <p><%= link_to "みんなの書いたメモを検索してみる >>", search_path %></p>
+
+      <div>
+        <% if @posts.exists? %>
+
+          <% @posts.each do |post| %>
+            <ul class="grid cs-style-1" id="post_images">
+              <li>
+                <figure class="memo_pin">
+                  <i class="fas fa-thumbtack"></i>
+                  <%= image_tag post.get_image(500,400) %>
+                  <figcaption>
+                    <h3><%= post.title.truncate(10) %></h3>
+                    <span>
+                      <%= post.categories.map(&:name).join(', ').truncate(12) %><br>
+                      <i class="fas fa-heart"></i>&nbsp;<%= post.favorites.count %>&emsp;<%= "#{post.comments.count} コメント" %>
+                    </span>
+                    <%= link_to "詳しく見る", post_path(post) %>
+                  </figcaption>
+                </figure>
+              </li>
+            </ul>
+          <% end %>
+
+        <% else %>
+        	<p>メモが 0 枚です。</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
 
-
-
-<div class="mb-md-5">
-  <h4><i class="fas fa-pen"></i>&nbsp;みんなの新着メモ</h4>
-  <p><%= link_to "みんなの書いたメモを検索してみる >>", search_path %></p>
-  <% if @posts.exists? %>
-
-    <% @posts.each do |post| %>
-      <ul class="grid cs-style-1" id="post_images">
-        <li>
-          <figure class="memo_pin">
-            <i class="fas fa-thumbtack"></i>
-            <%= image_tag post.get_image(500,400) %>
-            <figcaption>
-              <h3><%= post.title.truncate(10) %></h3>
-              <span>
-                <%= post.categories.map(&:name).join(', ').truncate(12) %><br>
-                <i class="fas fa-heart"></i>&nbsp;<%= post.favorites.count %>&emsp;<%= "#{post.comments.count} コメント" %>
-              </span>
-              <%= link_to "詳しく見る", post_path(post) %>
-            </figcaption>
-          </figure>
-        </li>
-      </ul>
-    <% end %>
-
-  <% else %>
-  	<p>メモが 0 枚です。</p>
-  <% end %>
-</div>
-
-
-
-
-<p><%= render "public/searches/search" %></p>
-
-
-</div>
-</div>
 </div>

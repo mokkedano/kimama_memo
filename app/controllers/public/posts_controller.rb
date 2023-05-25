@@ -26,7 +26,7 @@ class Public::PostsController < ApplicationController
 
   def index
     # @posts = Post.page(params[:page]).per(10)
-    @posts = current_end_user.posts
+    @posts = current_end_user.posts.page(params[:page])
     @categories = current_end_user.categories.order('created_at DESC')
 
     # @categories = Category.all
@@ -79,8 +79,7 @@ class Public::PostsController < ApplicationController
   def search_category
     @categories = current_end_user.categories.order('created_at DESC')
     @category = Category.find(params[:category_id])
-    @posts = current_end_user.posts.includes(:post_category_relations).where(post_category_relations: {category_id: params[:category_id] })
-    # @posts = @category.posts.page(params[:page]).per(10)
+    @posts = current_end_user.posts.includes(:post_category_relations).where(post_category_relations: {category_id: params[:category_id] }).page(params[:page])
   end
 
 

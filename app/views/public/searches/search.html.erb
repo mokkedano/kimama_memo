@@ -1,50 +1,51 @@
 <div class="container">
+
+
   <div class="row mt-md-5">
-
-
-
     <div class="col-md-3">
       <%= render "public/end_users/sidebar", end_user: @end_user %>
     </div>
 
 
-
     <div class="col-md-8 offset-md-1">
-      <div class="mb-md-5">
+      <div class="mb-md-4">
         <h3>みんなのメモ</h3>
       </div>
 
-      <div>
-        <% if params[:category_id] %>
-          <h4>「<%= @category.name %>」のメモ 検索結果 (全<%= @all_posts_count %>枚)</h4>
-        <% elsif %>
-        <%# if params[:range] %>
-          <h4>「<%= params[:word] %>」のメモ 検索結果 (全<%= @all_posts_count %>枚)</h4>
+      <div class="mt-md-5" style="text-align:center;">
+        <%= render "search" %>
+      </div>
+
+      <div class="mt-md-5" id="tag_box">
+      <p style="font-size:15px;"><i class="fas fa-lightbulb"></i> 自分が登録しているカテゴリで検索してみよう！</p>
+        <% if @categories.present? %>
+          <% last_category = nil %>
+          <% @categories.each do |category| %>
+            <% if category != last_category %>
+              <span style="font-size:15px; margin:2px;">
+                <%= link_to category.name, search_path(category_id: category.id), class: "btn btn-sm btn-outline-primary" %>
+              </span>
+            <% end %>
+            <% last_category = category %>
+          <% end %>
         <% else %>
-          <h4>すべてのメモ (全<%= @all_posts_count %>枚)</h4>
+          <p>登録しているカテゴリがありません。</p>
         <% end %>
       </div>
 
-      <div id="tag_box">
-        <p style="font-size:15px;"><i class="fas fa-lightbulb"></i>自分が登録しているカテゴリで検索してみよう！</p>
-          <% if @categories.present? %>
-            <% last_category = nil %>
-            <% @categories.each do |category| %>
-              <% if category != last_category %>
-                <span style="font-size:15px; margin:2px;">
-                  <%= link_to category.name, search_path(category_id: category.id), class: "btn btn-sm btn-outline-primary" %>
-                </span>
-              <% end %>
-              <% last_category = category %>
-            <% end %>
-          <% else %>
-            <p>登録しているカテゴリがありません。</p>
-          <% end %>
+      <div class="mt-md-5">
+        <% if params[:category_id] %>
+          <h4>「<%= @category.name %>」のメモ 検索結果 (全<%= @posts.count %>枚)</h4>
+        <% elsif %>
+        <%# if params[:range] %>
+          <h4>「<%= params[:word] %>」のメモ 検索結果 (全<%= @posts.count %>枚)</h4>
+        <% else %>
+          <h4>すべてのメモ (全<%= @posts.count %>枚)</h4>
+        <% end %>
       </div>
 
       <div>
       <% if @posts.exists? %>
-
         <% @posts.each do |post| %>
           <ul class="grid cs-style-1" id="post_images">
             <li>
@@ -63,14 +64,20 @@
             </li>
           </ul>
         <% end %>
-
         <% else %>
         	<p>メモが 0 枚です。</p>
         <% end %>
       </div>
-   </div>
+    </div>
+  </div>
 
 
 
+  <div class="row" style="text-align:center;">
+    <div class="col-md-7"></div>
+    <div class="col-md-3">
+        <%= paginate @posts %>
+    </div>
+    <div class="col-md-2"></div>
   </div>
 </div>
