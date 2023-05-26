@@ -1,4 +1,5 @@
 class Admin::EndUsersController < ApplicationController
+  before_action :authenticate_admin!
   before_action :set_end_user, only: [:show, :edit, :update]
 
 
@@ -26,7 +27,7 @@ class Admin::EndUsersController < ApplicationController
 
   def posts
     @end_user = EndUser.find(params[:end_user_id])
-    @posts = @end_user.posts
+    @posts = @end_user.posts.order('id DESC').page(params[:page]).per(10)
   end
 
 

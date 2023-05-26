@@ -25,7 +25,6 @@ class Public::PostsController < ApplicationController
 
 
   def index
-    # @posts = Post.page(params[:page]).per(10)
     @posts = current_end_user.posts.page(params[:page])
     @categories = current_end_user.categories.order('created_at DESC')
 

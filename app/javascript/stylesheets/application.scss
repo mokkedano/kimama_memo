@@ -63,6 +63,7 @@ p, h2, h3, h4, h5, li, .form, table {
 
 
 
+// 会員側
 // TOP画面
 #post_images {
   float: left;
@@ -178,3 +179,10 @@ p, h2, h3, h4, h5, li, .form, table {
 }
 
 
+
+
+// 管理者側
+// メモ詳細画面
+.admin_post_show {
+  font-size: 18px;
+}

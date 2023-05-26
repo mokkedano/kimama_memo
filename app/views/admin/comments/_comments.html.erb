@@ -1,15 +1,30 @@
-<% end_user.comments.each do |comment| %>
+
 <%# @post.comments.each do |comment| %>
-  <tr>
-    <td><%= image_tag comment.post.get_image(100,100) %></td>
-    <td><%= comment.post.title %></td>
-    <td><%= comment.comment %></td>
-    <td><%= comment.created_at.strftime('%Y/%m/%d %T') %></td>
-    <td>
-      <% if admin_signed_in? %>
-        <%= link_to "管理者削除", admin_end_user_comment_path(comment.post, comment), method: :delete,
-                          remote: true, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>
-      <% end %>
-    </td>
-  </tr>
-<% end %>
+<table class="table">
+	<thead>
+		<th>コメントしたメモ</th>
+		<th></th>
+		<th>コメント本文</th>
+		<th>コメント日時</th>
+		<th></th>
+	</thead>
+<% end_user.comments.each do |comment| %>
+	<tbody>
+	  <tr>
+      <td><%= image_tag comment.post.get_image(100,100) %></td>
+      <td><%= comment.post.title.truncate(12) %></td>
+      <td><%= comment.comment.truncate(24) %></td>
+      <td><%= comment.created_at.strftime('%Y/%m/%d %T') %></td>
+      <td>
+        <% if admin_signed_in? %>
+          <%= link_to "管理者削除", admin_end_user_comment_path(comment.post, comment), method: :delete,
+                            remote: true, "data-confirm" => "本当に消しますか？", class: "btn btn-outline-danger btn-sm" %>
+        <% end %>
+      </td>
+    </tr>
+
+	</tbody>
+	<% end %>
+</table>
+
+

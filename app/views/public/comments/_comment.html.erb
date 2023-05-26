@@ -10,7 +10,7 @@
     <% end %>
     <% if admin_signed_in? %>
          <%= link_to "管理者削除", admin_end_user_comment_path(comment.post, comment), method: :delete,
-                          remote: true, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>
+                          remote: true, "data-confirm" => "本当に消しますか？", class: "btn btn-outline-danger btn-sm" %>
     <% end %>
   </P>
 <% end %>

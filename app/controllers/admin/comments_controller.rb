@@ -1,4 +1,5 @@
 class Admin::CommentsController < ApplicationController
+  before_action :authenticate_admin!
 
 
   def index
@@ -18,7 +19,7 @@ class Admin::CommentsController < ApplicationController
     comment = Comment.find(params[:id])
     comment.destroy
     @post = comment.post
-    @comments = Comment.find(params[:id])
+    # @comments = Comment.find(params[:id])
   end
 
 

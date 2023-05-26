@@ -1,46 +1,55 @@
-<h2><%= @end_user.nickname %>さんのページ</h2>
-<table class="table">
-	<!--<thead>-->
-	<!--	<th></th>-->
-	<!--	<th></th>-->
-	<!--	<th></th>-->
-	<!--</thead>-->
-	<tbody>
-		<tr>
-			<td>会員ID</td>
-			<td><%= @end_user.id %></td>
-		</tr>
-		<tr>
-			<td>プロフィール画像</td>
-			<td><%= image_tag @end_user.get_profile_image(100,100) %></td>
-		</tr>
-		<tr>
-			<td>ニックネーム</td>
-			<td><%= @end_user.nickname %></td>
-		</tr>
-		<tr>
-			<td>自己紹介</td>
-			<td><%= @end_user.self_introduction %></td>
-		</tr>
-		<tr>
-			<td>メールアドレス</td>
-			<td><%=  @end_user.email %></td>
-		</tr>
-		<tr>
-			<td>会員ステータス</td>
-			<td>
-			  <% if @end_user.is_deleted? %>
-					<span class="text-invalid">退会済み</span>
-				<% else %>
-					<span class="text-active">有効</span>
-				<% end %>
-			</td>
-		</tr>
-		<tr>
-			<td><%= link_to "編集", edit_admin_end_user_path(@end_user), class: "btn btn-success" %></td>
-			<td><%= link_to "メモ一覧を見る", admin_end_user_posts_path(@end_user), class: "btn btn-primary" %></td>
-			<td><%= link_to "コメント一覧を見る", admin_end_user_comments_path(@end_user), class: "btn btn-primary" %></td>
-		</tr>
-	</tbody>
-</table>
+<div class="container">
+  <div class="row mt-md-5">
+    <div class="col-md-12" style="text-align:center;">
 
+			<h2 style="text-align:left;"><%= @end_user.nickname %>さんのページ</h2>
+			<table class="table">
+			<!--<table class="table table-borderless">-->
+				<tbody>
+					<tr>
+						<td>会員ID</td>
+						<td><%= @end_user.id %></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>プロフィール画像</td>
+						<td><%= image_tag @end_user.get_profile_image(100,100) %></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>ニックネーム</td>
+						<td><%= @end_user.nickname %></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>自己紹介</td>
+						<td><%= @end_user.self_introduction %></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>メールアドレス</td>
+						<td><%=  @end_user.email %></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>会員ステータス</td>
+						<td>
+						  <% if @end_user.is_deleted? %>
+								<span class="text-invalid">退会済み</span>
+							<% else %>
+								<span class="text-active">有効</span>
+							<% end %>
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><%= link_to "編集", edit_admin_end_user_path(@end_user), class: "btn btn-success" %></td>
+						<td><%= link_to "メモ一覧を見る", admin_end_user_posts_path(@end_user), class: "btn btn-info" %></td>
+						<td><%= link_to "コメント一覧を見る", admin_end_user_comments_path(@end_user), class: "btn btn-primary" %></td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+</div>
