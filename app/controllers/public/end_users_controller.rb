@@ -7,9 +7,7 @@ class Public::EndUsersController < ApplicationController
 
   def show
     # @posts = @end_user.posts.where(status: true).order('created_at DESC')
-    # @point = @end_user.passive_points.all
     @categories = @end_user.categories.order('created_at DESC').limit(15)
-    # @posts_category = @end_user.categories.order('created_at DESC').limit(15)
     @posts = @end_user.posts.order('id DESC').limit(6)
   end
 

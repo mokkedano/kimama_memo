@@ -28,7 +28,7 @@ class EndUser < ApplicationRecord
 
 
   validates :nickname, presence: true, length: { minimum: 1, maximum: 20 }
-  validates :self_introduction, length: { maximum: 50 }
+  validates :self_introduction, length: { maximum: 100 }
   validates :email, presence: true, uniqueness: true
 
 

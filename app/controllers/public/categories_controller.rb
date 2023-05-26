@@ -1,6 +1,6 @@
 class Public::CategoriesController < ApplicationController
   before_action :authenticate_end_user!
-  before_action :set_end_user, only: [:index, :edit]
+  before_action :set_end_user, only: [:index, :edit, :update]
 
 
   def index

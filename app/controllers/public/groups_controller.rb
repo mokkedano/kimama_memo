@@ -1,7 +1,7 @@
 class Public::GroupsController < ApplicationController
   before_action :authenticate_end_user!
   before_action :set_group, only: [:show, :edit, :update, :destroy]
-  before_action :set_end_user, only: [:new, :index, :show, :edit, :group_all]
+  before_action :set_end_user, only: [:new, :create, :index, :show, :edit, :update, :group_all]
   before_action :is_matchig_owner_user, only: [:edit, :update]
 
 
@@ -30,8 +30,7 @@ class Public::GroupsController < ApplicationController
 
 
   def index
-    @groups = current_end_user.groups
-    @groups_none = "グループに参加していません。"
+    @groups = current_end_user.groups.page(params[:page])
   end
 
 
@@ -67,7 +66,7 @@ class Public::GroupsController < ApplicationController
 
 
   def group_all
-    @groups = Group.all
+    @groups = Group.all.page(params[:page])
   end
 
 

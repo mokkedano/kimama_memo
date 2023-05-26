@@ -12,15 +12,16 @@
         <h4>カテゴリ編集</h4>
       </div>
 
+      <%= render "layouts/error_messages", model: @category %>
 
       <%= form_with model: @category, url: category_path, method: :patch, local: true do |f| %>
         <div class="form-group">
           <i class="fas fa-tags"></i>&nbsp;
-          <%= f.label :name, "カテゴリ名" %>
-          <%= f.text_field :name, class: "form-control", placeholder: "20文字以内" %>
+          <%= f.label :name, "カテゴリ名", class: "form" %>
+          <%= f.text_field :name, class: "form-control form", placeholder: "20文字以内" %>
         </div>
         <div style="text-align:right;" class="form-group">
-          <%= f.submit "変更", class: "btn btn-info" %>
+          <%= f.submit "変更", class: "btn btn-info form" %>
         </div>
       <% end %>
     </div>

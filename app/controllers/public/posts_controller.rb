@@ -1,7 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_end_user!
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :set_end_user, only: [:new, :index, :show, :edit, :search_category]
+  before_action :set_end_user, only: [:new, :create, :index, :show, :edit, :update, :search_category]
   # before_action :is_matching_login_end_user, only: [:edit, :update, :destroy]
 
 

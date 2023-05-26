@@ -1,7 +1,7 @@
 <div class="container">
+
+
   <div class="row mt-md-5">
-
-
     <div class="col-md-3">
       <%= render "public/end_users/sidebar", end_user: @end_user %>
     </div>
@@ -16,12 +16,21 @@
         </table>
       </div>
       <% if @groups.count == 0 %>
-        <%= @groups_none %>
+        <p>グループに参加していません。</p>
       <% else %>
         <%= render "index", groups: @groups %>
       <% end %>
     </div>
-
-
   </div>
+
+
+  <div class="row" style="text-align:center;">
+    <div class="col-md-7"></div>
+    <div class="col-md-3 mb-md-4">
+        <%= paginate @groups %>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+
+
 </div>

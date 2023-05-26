@@ -1,7 +1,7 @@
 <div class="container">
+
+
   <div class="row mt-md-5">
-
-
     <div class="col-md-3">
       <%= render "public/end_users/sidebar", end_user: @end_user %>
     </div>
@@ -17,7 +17,16 @@
       </div>
       <%= render "index", groups: @groups %>
     </div>
-
-
   </div>
+
+
+  <div class="row" style="text-align:center;">
+    <div class="col-md-7"></div>
+    <div class="col-md-3 mb-md-4">
+        <%= paginate @groups %>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+
+
 </div>

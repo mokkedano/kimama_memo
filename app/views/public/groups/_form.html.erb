@@ -1,5 +1,7 @@
 <%= form_with model: group, url: url, local: true do |f| %>
 
+  <%= render "layouts/error_messages", model: group %>
+
   <div class="form-group">
     <!--<i class="fas fa-ghost"></i>-->
     <i class="fas fa-star"></i>
@@ -15,7 +17,7 @@
 
   <div class="form-group">
     <i class="fas fa-image"></i>
-    <%= f.file_field :image, accept: "image/*", class: "form-control-file" %>
+    <%= f.file_field :image, accept: "image/*", class: "form-control-file form" %>
   </div>
 
   <div class="form-group" style="text-align:right;">

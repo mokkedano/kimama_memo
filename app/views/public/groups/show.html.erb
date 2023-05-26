@@ -23,7 +23,7 @@
               <%= link_to "グループを離れる", group_path(@group), method: :delete,
                                     "data-confirm" => "本当にグループを離れますか？", class: "btn btn-outline-danger btn-sm" %>
             <% else %>
-              <%= link_to "グループへ参加する", group_join_path(@group), class: "btn btn-success btn-sm" %>
+              <%= link_to "グループへ参加する", group_join_path(@group), class: "btn btn-outline-success btn-sm" %>
             <% end %>
           </div>
           <div style="vertical-align:middle;" class="mt-md-3">

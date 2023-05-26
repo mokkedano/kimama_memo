@@ -1,26 +1,28 @@
+<%= render "layouts/error_messages", model: post %>
+
 <div class="card w-75 mx-auto shadow-lg mt-md-4">
   <div class="card-body" id="card_form">
 
   <%= form_with model: post, url: url, local: true do |f| %>
     <div class="form-group">
       <i class="fas fa-camera"></i>
-      <%= f.file_field :image, accept: "image/*" %>
+      <%= f.file_field :image, accept: "image/*", class: "form-control-file form" %>
     </div>
     <div class="form-group">
       <i class="fas fa-pen"></i>
       <%= f.label :title, "タイトル", class: "form" %>
-      <%= f.text_field :title, class: "form-control" %>
+      <%= f.text_field :title, class: "form-control form" %>
     </div>
     <div class="form-group">
       <i class="fas fa-pen"></i>
       <%= f.label :introduction, "本文", class: "form" %>
-      <%= f.text_area :introduction, class: "form-control" %>
+      <%= f.text_area :introduction, class: "form-control form" %>
     </div>
     <!--<div class="field">-->
     <div class="form-group">
       <i class="fas fa-tags"></i>
       <%= f.label :name, "カテゴリ ( , で区切ると複数のカテゴリに登録できます。)", class: "form" %>
-      <%= f.text_field :name, value: @category_list, class: "form-control" %>
+      <%= f.text_field :name, value: @category_list, class: "form-control form" %>
     </div>
     <div class="form-group" style="text-align:center;">
       <%= f.submit submit, class: "btn btn-info form" %>
