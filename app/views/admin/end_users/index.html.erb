@@ -18,12 +18,12 @@
 							<td><%= end_user.id %></td>
 							<td>
 							  <%= link_to admin_end_user_path(end_user) do %>
-			            <%= image_tag end_user.get_profile_image(50,50) %>
+			            <%= image_tag end_user.get_profile_image(70,70) %>
 			          <% end %>
 			        </td>
 			        <td>
 							  <%= link_to admin_end_user_path(end_user) do %>
-			            <%= end_user.nickname %>
+			            <%= end_user.nickname.truncate(12) %>
 			          <% end %>
 			        </td>
 							<td><%= end_user.email %></td>
