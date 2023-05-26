@@ -10,15 +10,15 @@
       <%= image_tag @post.get_image(700,1000) %>
 
       <div class="mt-md-5" style="text-align:left">
-        <p class="admin_post_show">タイトル：&emsp;<%= @post.title %></p>
+        <p class="admin_show">タイトル：&emsp;<%= @post.title %></p>
       </div>
 
       <div class="mt-md-3" style="text-align:left">
-        <p class="admin_post_show">&emsp;本文&emsp;：&emsp;<%= @post.introduction %></P>
+        <p class="admin_show">&emsp;本文&emsp;：&emsp;<%= @post.introduction %></P>
       </div>
 
       <div class="mt-md-3" style="text-align:left">
-        <p class="admin_post_show">カテゴリ：&emsp;
+        <p class="admin_show">カテゴリ：&emsp;
           <% @post.categories.each do |category| %>
           <%#= link_to category.name posts_search_category_path(category_id: category.posts.id) %>
             <%= category.name %>
@@ -27,11 +27,11 @@
       </div>
 
       <div class="mt-md-3" style="text-align:left">
-        <p class="admin_post_show">登録日時：&emsp;<%= @post.created_at.strftime("%Y/%m/%d %T") %></P>
+        <p class="admin_show">登録日時：&emsp;<%= @post.created_at.strftime("%Y/%m/%d %T") %></P>
       </div>
 
       <div class="mt-md-3" style="text-align:left">
-        <p class="admin_post_show">いいね数：&emsp;
+        <p class="admin_show">いいね数：&emsp;
         <i class="fas fa-heart"></i>&nbsp;<%= @post.favorites.count %></P>
       </div>
 

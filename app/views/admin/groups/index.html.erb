@@ -1,31 +1,56 @@
-<h2>グループ一覧</h2>
+<div class="container">
 
-<table class='table table-hover table-inverse'>
-    <thead>
-      <tr>
-        <th></th>
-        <th>グループ名</th>
-        <th>紹介文</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @groups.each do |group| %>
-        <tr>
-          <td>
-            <%= link_to group_path(group) do %>
-              <%= image_tag group.get_group_image(100,100) %>
-    		    <% end %>
-    		  </td>
-          <td><%= link_to group.name, group_path(group) %></td>
-          <td><%= group.introduction %></td>
-          <td><%= group.end_users.count %></td>
-          <td>
-            <% if admin_signed_in? %>
-              <%= link_to "編集", edit_admin_group_path(group), class: "btn btn-sm btn-success" %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+
+  <div class="row mt-md-5">
+    <div class="col-md-12">
+      <h2>グループ一覧</h2>
+
+      <table class='table table-hover table-inverse'>
+        <thead>
+          <tr>
+            <th>グループ画像</th>
+            <th>グループ名</th>
+            <th>紹介文</th>
+            <th>メンバー数</th>
+            <!--<th colspan="2"></th>-->
+          </tr>
+        </thead>
+        <tbody>
+          <% @groups.each do |group| %>
+            <tr>
+              <td>
+                <%= link_to admin_group_path(group) do %>
+                  <%= image_tag group.get_group_image(70,70) %>
+        		    <% end %>
+        		  </td>
+              <td>
+                <%= link_to admin_group_path(group) do %>
+                  <%= group.name.truncate(12) %>
+                <% end %>
+              </td>
+              <td><%= group.introduction.truncate(12) %></td>
+              <td><%= group.end_users.count %></td>
+              <!--<td>-->
+                <%# if admin_signed_in? %>
+                  <%#= link_to "編集", edit_admin_group_path(group), class: "btn btn-sm btn-success" %>
+                <%# end %>
+              <!--</td>-->
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+	  </div>
+	</div>
+
+
+	<div class="row" style="text-align:center;">
+    <div class="col-md-5"></div>
+    <div class="col-md-4 mb-md-4">
+        <%= paginate @groups %>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+
+
+
+</div>

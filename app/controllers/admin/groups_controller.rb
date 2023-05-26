@@ -3,11 +3,12 @@ class Admin::GroupsController < ApplicationController
 
 
   def index
-    @groups = Group.all
+    @groups = Group.all.order('id DESC').page(params[:page]).per(10)
   end
 
 
   def show
+    @group = Group.find(params[:id])
   end
 
 

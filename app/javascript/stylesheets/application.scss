@@ -61,6 +61,10 @@ p, h2, h3, h4, h5, li, .form, table, span {
   color: #808080;
 }
 
+.sign_out {
+  color: #808080;
+}
+
 
 
 // 会員側
@@ -181,8 +185,17 @@ p, h2, h3, h4, h5, li, .form, table, span {
 
 
 
+
 // 管理者側
-// メモ詳細画面
-.admin_post_show {
+// TOP画面
+#admin_top {
+  font-size: 20px;
+}
+
+
+
+// メモ詳細・グループ詳細画面
+.admin_show {
   font-size: 18px;
 }
+

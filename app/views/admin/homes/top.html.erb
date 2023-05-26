@@ -1,14 +1,33 @@
-<h1>管理者TOPページ</h1>
+<div class="container">
+  <h2 class="mt-md-5">管理者TOPページ</h2>
+  <div class="row mt-md-5">
 
+    <div class="col-md-2"></div>
 
-<h2>会員一覧</h2>
-<%= link_to "一覧を見る>>", admin_end_users_path %>
+    <div class="col-md-8">
+      <table class="table table-borderless" id="admin_top">
+        <tbody>
+          <tr>
+            <td><i class="fas fa-user"></i>&nbsp;&emsp;会員一覧</td>
+            <td><%= link_to "一覧を見る>>", admin_end_users_path %></td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-pen"></i>&nbsp;&emsp;会員投稿メモ一覧</td>
+            <td><%= link_to "一覧を見る>>", admin_posts_path %></td>
+          </tr>
+          <tr>
+            <td><i class="far fa-comment"></i>&nbsp;&emsp;会員コメント一覧</td>
+            <td><%= link_to "一覧を見る>>", admin_comment_all_path %></td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-ghost"></i>&nbsp;&emsp;グループ一覧</td>
+            <td><%= link_to "一覧を見る>>", admin_groups_path %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-<h2>会員投稿メモ一覧</h2>
-<%= link_to "一覧を見る>>", admin_posts_path %>
+    <div class="col-md-2"></div>
 
-<h2>会員コメント一覧</h2>
-<%= link_to "一覧を見る>>", admin_comment_all_path %>
-
-<h2>グループ一覧</h2>
-<%= link_to "一覧を見る>>", admin_groups_path %>
+	</div>
+</div>

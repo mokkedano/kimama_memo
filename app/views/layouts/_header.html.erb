@@ -23,8 +23,27 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <% if admin_signed_in? %>
            <ul class="navbar-nav ml-auto">
-            <li class="d-flex align-items-end mr-5">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-dark mr-0" %>
+             <li class="d-flex align-items-end mr-5">
+               <%= link_to admin_root_path, class: "nav-link text-dark mr-0" do %>
+			            <i class="far fa-star"></i>&nbsp;管理者TOP&nbsp;<i class="far fa-star"></i>
+			          <% end %>
+             </li>
+             <li class="nav-item">
+               <%= link_to "会員", admin_end_users_path, class: "nav-link text-dark mr-0" %>
+             </li>
+             <li class="nav-item">
+               <%= link_to "投稿", admin_posts_path, class: "nav-link text-dark mr-0" %>
+             </li>
+             <li class="nav-item">
+               <%= link_to "コメント", admin_comment_all_path, class: "nav-link text-dark mr-0" %>
+             </li>
+             <li class="nav-item">
+               <%= link_to "グループ", admin_groups_path, class: "nav-link text-dark mr-0" %>
+             </li>
+            <li class="nav-item">
+              <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-dark mr-0" do %>
+                ログアウト&nbsp;<i class="fas fa-sign-out-alt sign_out"></i>
+              <% end %>
             </li>
           <% elsif end_user_signed_in? %>
             <li class="nav-item">
@@ -39,7 +58,9 @@
               <%= link_to "グループ", group_all_path, class: "nav-link text-dark mr-0" %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: "nav-link text-dark mr-0" %>
+              <%= link_to destroy_end_user_session_path, method: :delete, class: "nav-link text-dark mr-0" do %>
+                ログアウト&nbsp;<i class="fas fa-sign-out-alt sign_out"></i>
+              <% end %>
             </li>
           <% else %>
             <li class="nav-item">
