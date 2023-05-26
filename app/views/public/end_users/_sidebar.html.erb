@@ -27,7 +27,7 @@
       <!--<i class="fas fa-cog setting_btn"></i>-->
     <% else %>
       <i class="fas fa-cog setting_btn"></i>&nbsp;
-      <p>プロフィール編集<br>(※ゲストユーザー様は<br>&emsp;利用いただけません)</p>
+      <p>プロフィール編集<br>(※ゲストユーザー様は<br>&emsp;ご利用いただけません)</p>
     <% end %>
   </p>
   </div>
@@ -43,7 +43,7 @@
         <% if end_user.nickname != "guest_end_user" %>
           <%= link_to "退会する", unsubscribe_path %>
         <% else %>
-          退会する<br>&emsp;&emsp;(※ゲストユーザー様は<br>&emsp;&emsp;&emsp;&emsp;ご利用いただけません)
+          退会する<br>&emsp;&emsp;(※ゲストユーザー様は<br>&emsp;&emsp;&emsp;ご利用いただけません)
         <% end %>
       </li>
     </ul>
