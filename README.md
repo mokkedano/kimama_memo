@@ -41,4 +41,5 @@
 - IDE：Cloud9
 
 ## 使用素材
-- アイコンを使わせていただいたサイト様：https://iconbu.com/
+- アイコンを使わせていただいたサイト様【https://iconbu.com/】
+- ロゴ作成に利用させていただいたサイト様【https://www.canva.com/】
