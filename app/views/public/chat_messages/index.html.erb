@@ -51,10 +51,10 @@
         <%= form_with model: @message, url: group_chat_messages_path(group_id: @group.id), local: true, method: :post do |f| %>
           <%= f.hidden_field :group_id, :value => @group.id %>
           <div class="form-group">
-            <%= f.text_area :message, class: "form-control", rows: '4', cols: '70', placeholder: "送信したいメッセージをここに入力してください。"  %>
+            <%= f.text_area :message, class: "form-control form", rows: '4', cols: '70', placeholder: "送信したいメッセージをここに入力してください。"  %>
           </div>
           <div style="text-align:right;" class="form-group">
-            <%= f.submit "送信", class: "btn btn-outline-info btn-sm" %>
+            <%= f.submit "送信", class: "btn btn-outline-info btn-sm form" %>
           </div>
         <% end %>
       </div>

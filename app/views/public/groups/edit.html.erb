@@ -11,13 +11,13 @@
       <div class="mb-md-5">
         <h4>グループ情報 編集</h4>
       </div>
-      
+
       <%= render 'form', group: @group, url: group_path(@group), submit: "変更を保存" %>
 
       <div style="text-align:center" class="mt-md-5 pt-md-5">
         <% if @group.owner_id == current_end_user.id %>
           <%= link_to "グループを削除する", group_destroy_all_path(@group), method: :delete,
-                                    "data-confirm" => "本当に消しますか？", class: "btn btn-sm btn btn-outline-danger" %>
+                                    "data-confirm" => "本当に消しますか？", class: "btn btn-sm btn btn-outline-danger form" %>
         <% end %>
       </div>
     </div>
