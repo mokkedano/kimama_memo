@@ -18,19 +18,20 @@
           <thead>
             <tr>
               <td>カテゴリ名</td>
-              <th></th>
+              <!--<th></th>-->
             </tr>
           </thead>
           <% @categories.each do |category| %>
             <% if category != last_category %>
             <tbody>
               <tr>
-                <td valign="middle"><%= category.name %></td>
-                <td align="middle">
-                  <%= link_to edit_category_path(category), class: "btn-flat-simple" do %>
-                    <i class="fa fa-caret-right"></i>&nbsp;編集
-                  <% end %>
-                </td>
+                <td valign="middle">&emsp;&emsp;<%= category.name %></td>
+                <!--<td align="middle">-->
+                  <%#= link_to edit_category_path(category), class: "btn-flat-simple" do %>
+                    <!--<i class="fa fa-caret-right"></i>&nbsp;編集-->
+                  <%# end %>
+                <!--</td>-->
+                <!--編集機能を使用すると、他の人の登録したカテゴリ名も変更になってしまうというエラーが起きているため、一旦機能を封印-->
               </tr>
             </tbody>
             <% end %>

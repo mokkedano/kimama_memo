@@ -44,7 +44,7 @@ class Public::GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      redirect_to groups_path, notice: "グループ情報を更新しました！"
+      redirect_to group_path(@group), notice: "グループ情報を更新しました！"
     else
       render "edit"
     end
