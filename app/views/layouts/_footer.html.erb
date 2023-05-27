@@ -1,0 +1,33 @@
+<footer class="shadow-lg mt-5 pt-3" style="background-color:#fafdff;">
+  <div class="container">
+    <div class="row no-gutters">
+      <div class="col-md-7"></div>
+
+      <div class="col-md-2">
+        <div class="pb-md-5 mt-md-5 pt-md-5" style="text-align:right;">
+          <span>
+            <%= link_to root_path do %>
+              <i class="fab fa-twitter fa-lg sns_icon"></i>
+            <% end %>
+          </span>&emsp;
+          <span>
+            <%= link_to root_path do %>
+              <i class="fab fa-instagram fa-lg sns_icon"></i>
+            <% end %>
+          </span>&emsp;
+          <span>
+            <%= link_to root_path do %>
+              <i class="fab fa-facebook fa-lg sns_icon"></i>
+            <% end %>
+          </span>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div style=text-align:center;>
+          <%= image_tag 'logo.jpg', size: '200x150' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

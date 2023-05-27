@@ -36,8 +36,8 @@
 
       <div style="text-align:right">
         <% if @post.end_user == current_end_user %>
-          <%= link_to "メモを編集する", edit_post_path(@post), class: "btn btn-outline-success btn-sm" %>
-          <%= link_to "メモを削除する", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-outline-danger btn-sm" %>
+          <%= link_to "メモを編集する", edit_post_path(@post), class: "btn btn-outline-success btn-sm form" %>
+          <%= link_to "メモを削除する", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-outline-danger btn-sm form" %>
         <% end %>
       </div>
 
