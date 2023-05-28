@@ -12,3 +12,12 @@ Admin.create!(
   password: 'testadmin'
 )
 
+
+end_users = EndUser.create!(
+  [
+    {email: 'haru@kaze', nickname: 'はる', password: 'kazetuyoi', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-end-user1.jpg"), filename:"sample-end-user1.jpg")},
+    {email: 'umi@natsu', nickname: 'なつ', password: 'atsusugi', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-end-user2.jpg"), filename:"sample-end-user2.jpg")},
+    {email: 'aki@kuri', nickname: 'あき', password: 'akikaze', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-end-user3.jpg"), filename:"sample-end-user3.jpg")},
+    {email: 'yuki@fuyu', nickname: 'ふゆ', password: 'shinshin', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-end-user4.jpg"), filename:"sample-end-user4.jpg")}
+  ]
+)
