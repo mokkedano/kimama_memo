@@ -3,13 +3,11 @@
     <h4>マイページ</h4>
   </div>
   <div class="row mt-md-5">
-
-
-
+    
+    
     <div class="col-md-3">
       <%= render "sidebar", end_user: @end_user %>
     </div>
-
 
 
     <div class="col-md-8 offset-md-1 mt-md-4">
@@ -30,12 +28,10 @@
         <% end %>
       </div>
 
-
       <div class="mt-md-5">
         <h5><i class="fas fa-pen"></i>&nbsp;最近したためたメモ</h5>
         <%#= render "public/posts/index_hover", posts: @posts %>
         <% if @posts.exists? %>
-
           <% @posts.each do |post| %>
             <ul class="grid cs-style-1" id="memo_images">
               <li>
@@ -54,7 +50,6 @@
               </li>
             </ul>
           <% end %>
-
         <% else %>
         	<p>メモが 0 枚です。</p>
         <% end %>
