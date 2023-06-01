@@ -18,6 +18,9 @@ class Post < ApplicationRecord
   validates :introduction, presence: true
 
 
+  enum status: { published: 0, draft: 1 }
+
+
 
 
   def get_image(width, height)
