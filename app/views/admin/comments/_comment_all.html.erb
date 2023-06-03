@@ -31,7 +31,11 @@
             <%= comment.comment.truncate(24) %>
           <% end %>
         </td>
-        <td class="sentiment-score"><%= comment.score %></td>
+        <% if comment.score < 0 %>
+          <td class="table-danger"><%= comment.score %></td>
+        <% else %>
+          <td><%= comment.score %></td>
+        <% end %>
         <td><%= comment.created_at.strftime('%Y/%m/%d %T') %></td>
         <!--<td>-->
           <%# if admin_signed_in? %>

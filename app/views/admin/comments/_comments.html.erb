@@ -17,18 +17,27 @@
         <td><%= image_tag comment.post.get_image(70,70) %></td>
         <td><%= comment.post.title.truncate(12) %></td>
         <td><%= comment.comment.truncate(24) %></td>
-        <td class="sentiment-score"><%= comment.score %></td>
+        <% if comment.score < 0 %>
+          <td class="table-danger"><%= comment.score %></td>
+        <% else %>
+          <td><%= comment.score %></td>
+        <% end %>
         <td><%= comment.created_at.strftime('%Y/%m/%d %T') %></td>
         <td>
           <% if admin_signed_in? %>
-            <%= link_to "管理者削除", admin_end_user_comment_path(comment.end_user, comment), method: :delete,
-                              remote: true, "data-confirm" => "本当に消しますか？", class: "btn btn-outline-danger btn-sm" %>
-            <%#= link_to "管理者削除", admin_end_user_comment_path(comment.post, comment), method: :delete,
-                              remote: true, "data-confirm" => "本当に消しますか？", class: "btn btn-outline-danger btn-sm" %>
+            <% if comment.score < 0 %>
+              <%= link_to "管理者削除", admin_end_user_comment_path(comment.end_user, comment), method: :delete,
+                              remote: true, "data-confirm" => "本当に消しますか？", class: "btn btn-danger btn-sm" %>
+            <% else %>
+              <%= link_to "管理者削除", admin_end_user_comment_path(comment.end_user, comment), method: :delete,
+                                remote: true, "data-confirm" => "本当に消しますか？", class: "btn btn-outline-danger btn-sm" %>
+              <%#= link_to "管理者削除", admin_end_user_comment_path(comment.post, comment), method: :delete,
+                                remote: true, "data-confirm" => "本当に消しますか？", class: "btn btn-outline-danger btn-sm" %>
+            <% end %>
           <% end %>
         </td>
       </tr>
-     <% end %>
-	 </tbody>
+    <% end %>
+	</tbody>
 
 </table>

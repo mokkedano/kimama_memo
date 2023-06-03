@@ -1,8 +1,8 @@
 <div class="container">
   <h2 style="text-align:left;" class="mt-md-5">メモ詳細・管理画面</h2>
+
+
   <div class="row mt-md-5">
-
-
     <div class="col-md-2"></div>
 
 
@@ -40,28 +40,33 @@
         <%= link_to "メモを削除する", admin_post_path(@post), method: :delete,
                   "data-confirm" => "本当に消しますか？", class: "btn btn-outline-danger btn-sm" %>
       </div>
+    </div>
 
-      <!--ステータスも表示させたい-->
+    <!--ステータスも表示させたい-->
 
-      <div class="mt-md-5">
-        <h4 style="text-align:left">コメント一覧</h4>
-        <!--コメント数 -->
-        <div id="comment_count_<%= @post.id %>" style="text-align:left">
-          <%= render "public/comments/comment_count", post: @post %>
-        </div>
-        <!--コメント一覧-->
-        <div id="comment_area_<%= @post.id %>">
-          <%= render "public/comments/comment", post: @post %>
-        </div>
-        <!--コメント機能 ここまで-->
-      </div>
+    <div class="col-md-2">
+	    <%= link_to "メモ一覧へ", admin_posts_path, class: "btn btn-outline-secondary" %>
 	  </div>
+	</div>
 
 
-  	<div class="col-md-2">
-  	  <%= link_to "メモ一覧へ", admin_posts_path, class: "btn btn-outline-secondary" %>
-  	</div>
 
+	<div class="row mt-md-5">
+	  <div class="col-md-1"></div>
 
+    <div class="col-md-11">
+      <h4 style="text-align:left">コメント一覧</h4>
+      <!--コメント数 -->
+      <div id="comment_count_<%= @post.id %>" style="text-align:left">
+        <%= render "public/comments/comment_count", post: @post %>
+      </div>
+      <!--コメント一覧-->
+      <div id="comment_area_<%= @post.id %>" style="text-align:left">
+        <%= render "public/comments/comment", post: @post %>
+      </div>
+      <!--コメント機能 ここまで-->
+    </div>
   </div>
+
+
 </div>
