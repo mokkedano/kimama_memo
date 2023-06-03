@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
     # posts コントローラー
     get "posts/search_category"=>"posts#search_category"
-    post "posts/category_options" => "posts#category_options"
+    # post "posts/category_options" => "posts#category_options"
     resources :posts do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]

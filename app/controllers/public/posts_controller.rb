@@ -84,7 +84,7 @@ class Public::PostsController < ApplicationController
   end
 
 
-  def category_options
+  # def category_options
     # @post = Post.new(post_params)
 
     # @category_options = Vision.get_image_data(post_params[:image])
@@ -92,7 +92,7 @@ class Public::PostsController < ApplicationController
       # category_options.each do |option|
       #   @post.option
       # end
-  end
+  # end
 
 
 

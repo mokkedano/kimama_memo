@@ -41,7 +41,7 @@
                   <i class="fas fa-thumbtack"></i>
                   <%= image_tag post.get_image(500,400) %>
                   <figcaption>
-                    <h3><%= post.title.truncate(10) %></h3>
+                    <h3><%= post.title.truncate(7) %></h3>
                     <span>
                       <%= post.categories.map(&:name).join(', ').truncate(12) %><br>
                       <i class="fas fa-heart"></i>&nbsp;<%= post.favorites.count %>&emsp;<%= "#{post.comments.count} コメント" %>

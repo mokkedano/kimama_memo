@@ -1,8 +1,8 @@
 <div class="container">
-  <div class="row mt-md-5">
+
+	<div class="row mt-md-5">
     <div class="col-md-12">
     	<h2>会員一覧</h2>
-
 			<table class="table">
 				<thead>
 					<tr>
@@ -13,7 +13,6 @@
 						<th>会員ステータス</th>
 					</tr>
 				</thead>
-
 				<tbody>
 					<% @end_users.each do |end_user| %>
 						<tr>
@@ -40,7 +39,16 @@
 					<% end %>
 				</tbody>
 			</table>
-
 		</div>
 	</div>
+
+
+	<div class="row" style="text-align:center;">
+    <div class="col-md-5"></div>
+    <div class="col-md-4 mb-md-4">
+        <%= paginate @end_users %>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+
 </div>

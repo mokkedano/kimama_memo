@@ -70,7 +70,9 @@
               <%= link_to "新規登録", new_end_user_registration_path, class: "nav-link text-dark mr-0" %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログイン", new_end_user_session_path, class: "nav-link text-dark mr-0" %>
+              <%= link_to new_end_user_session_path, class: "nav-link text-dark mr-0" do %>
+                ログイン&nbsp;<i class="fas fa-sign-in-alt sign_in"></i>
+              <% end %>
             </li>
              </ul>
           <% end %>

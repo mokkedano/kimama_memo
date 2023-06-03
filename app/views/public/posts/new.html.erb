@@ -11,7 +11,7 @@
       </div>
       <%= render "categories", categories: @categories %>
 
-      <div>
+      <!--<div>-->
         <%#= link_to "おすすめのカテゴリを見てみる", posts_category_options_path, class: "btn btn-outline-success btn-sm form" %>
 
         <%#= form_with model: @post, url: posts_category_options_path, local: true do |f| %>
@@ -22,7 +22,7 @@
         <%# @category_options.each do |option| %>
           <%#= @post.option %>
         <%# end %>
-      </div>
+      <!--</div>-->
 
       <%= render "form", post: @post, url: posts_path, submit: "メモ作成" %>
     </div>
