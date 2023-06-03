@@ -16,6 +16,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.end_user_id = current_end_user.id
     category_list = params[:post][:name].split(',')
+    @post.score = Language.get_data(post_params[:introduction])
     if @post.save
       @post.save_category(category_list)
       redirect_to post_path(@post), notice: "メモを保存しました！"

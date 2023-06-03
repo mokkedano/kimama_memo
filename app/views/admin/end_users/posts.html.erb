@@ -11,6 +11,7 @@
 						<th>画像</th>
 						<th>タイトル</th>
 						<th>本文</th>
+						<th>感情<br>スコア</th>
 						<th></th>
 						<th></th>
 						<th>登録日時</th>
@@ -32,7 +33,12 @@
 			    		  <% end %>
 			        </td>
 			        <td><%= post.introduction.truncate(24) %></td>
-							<td>♥<%= post.favorites.count %></td>
+			        <% if post.score < 0 %>
+			        	<td class="table-danger"><%= post.score %></td>
+			        <% else %>
+			        	<td><%= post.score %></td>
+			        <% end %>
+							<td><i class="fas fa-heart"></i>&nbsp;<%= post.favorites.count %></td>
 							<td>
 								<%= link_to admin_post_path(post) do %>
 									<i class="far fa-comment"></i>&nbsp;<%= post.comments.count %>
