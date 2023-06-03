@@ -10,6 +10,20 @@
         <h4>新しいメモを書く</h4>
       </div>
       <%= render "categories", categories: @categories %>
+
+      <div>
+        <%#= link_to "おすすめのカテゴリを見てみる", posts_category_options_path, class: "btn btn-outline-success btn-sm form" %>
+
+        <%#= form_with model: @post, url: posts_category_options_path, local: true do |f| %>
+        <%#= f.hidden_field :image, :value => @post.image.id %>
+        <%#= f.submit "おすすめのカテゴリを見てみる", class: "btn btn-success" %>
+        <%# end %>
+
+        <%# @category_options.each do |option| %>
+          <%#= @post.option %>
+        <%# end %>
+      </div>
+
       <%= render "form", post: @post, url: posts_path, submit: "メモ作成" %>
     </div>
 

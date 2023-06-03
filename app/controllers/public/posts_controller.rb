@@ -8,6 +8,7 @@ class Public::PostsController < ApplicationController
   def new
     @post = Post.new
     @categories = current_end_user.categories.order('created_at DESC')
+    # @category_options = Vision.get_image_data(post_params[:image])
   end
 
 
@@ -79,6 +80,17 @@ class Public::PostsController < ApplicationController
     @categories = current_end_user.categories.order('created_at DESC')
     @category = Category.find(params[:category_id])
     @posts = current_end_user.posts.includes(:post_category_relations).where(post_category_relations: {category_id: params[:category_id] }).page(params[:page])
+  end
+
+
+  def category_options
+    # @post = Post.new(post_params)
+
+    # @category_options = Vision.get_image_data(post_params[:image])
+
+      # category_options.each do |option|
+      #   @post.option
+      # end
   end
 
 

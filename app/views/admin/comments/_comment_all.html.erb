@@ -6,8 +6,9 @@
   		<th>プロフ画像</th>
   		<th>ニックネーム</th>
   		<th>コメント本文</th>
+  		<th>感情分析スコア</th>
   		<th>コメント日時</th>
-  		<th></th>
+  		<!--<th></th>-->
 		</tr>
 	</thead>
 
@@ -30,6 +31,7 @@
             <%= comment.comment.truncate(24) %>
           <% end %>
         </td>
+        <td class="sentiment-score"><%= comment.score %></td>
         <td><%= comment.created_at.strftime('%Y/%m/%d %T') %></td>
         <!--<td>-->
           <%# if admin_signed_in? %>

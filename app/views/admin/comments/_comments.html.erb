@@ -5,6 +5,7 @@
   		<th>コメントしたメモ</th>
   		<th></th>
   		<th>コメント本文</th>
+  		<th>感情分析スコア</th>
   		<th>コメント日時</th>
   		<th></th>
 		</tr>
@@ -16,6 +17,7 @@
         <td><%= image_tag comment.post.get_image(70,70) %></td>
         <td><%= comment.post.title.truncate(12) %></td>
         <td><%= comment.comment.truncate(24) %></td>
+        <td class="sentiment-score"><%= comment.score %></td>
         <td><%= comment.created_at.strftime('%Y/%m/%d %T') %></td>
         <td>
           <% if admin_signed_in? %>
