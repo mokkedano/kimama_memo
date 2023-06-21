@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt-md-5">
     <div class="col-md-12" style="text-align:center;">
-			<h2 style="text-align:left;"><%= @end_user.nickname %>さんのコメント一覧</h2>
+			<h2 class="admin_font" style="text-align:left;"><%= @end_user.nickname %>さんのコメント一覧</h2>
 			<div id="comment_index_<%= @end_user.id %>">
 				<%= render "comments", end_user: @end_user %>
 	    </div>

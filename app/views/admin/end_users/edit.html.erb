@@ -2,12 +2,12 @@
   <div class="row mt-md-5">
     <div class="col-md-12">
 
-			<h2><%= @end_user.nickname %>さんの会員情報編集ページ</h2>
+			<h2 class="admin_font"><%= @end_user.nickname %>さんの会員情報編集ページ</h2>
 
 			<%= render "layouts/error_messages", model: @end_user %>
 
 			<%= form_with model: @end_user, url: admin_end_user_path(@end_user), local: true, method: :patch do |f| %>
-			<table class="table">
+			<table class="table admin_font">
 				<tbody>
 					<tr>
 						<td>会員ID</td>
@@ -52,7 +52,7 @@
 			<% end %>
 
 			<div class="mb-md-4">
-			  <%= link_to "戻る", admin_end_user_path(@end_user), class: "btn btn-outline-secondary" %>
+			  <%= link_to "戻る", admin_end_user_path(@end_user), class: "btn btn-outline-secondary admin_font" %>
 			</div>
 
 		</div>

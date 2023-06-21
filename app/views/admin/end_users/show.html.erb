@@ -2,8 +2,8 @@
   <div class="row mt-md-5">
     <div class="col-md-12" style="text-align:center;">
 
-			<h2 style="text-align:left;"><%= @end_user.nickname %>さんのページ</h2>
-			<table class="table">
+			<h2 class="admin_font" style="text-align:left;"><%= @end_user.nickname %>さんのページ</h2>
+			<table class="table admin_font">
 			<!--<table class="table table-borderless">-->
 				<tbody>
 					<tr>
@@ -43,9 +43,9 @@
 						<td></td>
 					</tr>
 					<tr>
-						<td><%= link_to "編集", edit_admin_end_user_path(@end_user), class: "btn btn-success" %></td>
-						<td><%= link_to "メモ一覧を見る", admin_end_user_posts_path(@end_user), class: "btn btn-info" %></td>
-						<td><%= link_to "コメント一覧を見る", admin_end_user_comments_path(@end_user), class: "btn btn-primary" %></td>
+						<td><%= link_to "編集", edit_admin_end_user_path(@end_user), class: "btn btn-success admin_font" %></td>
+						<td><%= link_to "メモ一覧を見る", admin_end_user_posts_path(@end_user), class: "btn btn-info admin_font" %></td>
+						<td><%= link_to "コメント一覧を見る", admin_end_user_comments_path(@end_user), class: "btn btn-primary admin_font" %></td>
 					</tr>
 				</tbody>
 			</table>

@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 style="text-align:left;" class="mt-md-5">グループ詳細・管理画面</h2>
+  <h2 style="text-align:left;" class="mt-md-5 admin_font">グループ詳細・管理画面</h2>
   <div class="row mt-md-5">
 
 
@@ -10,27 +10,27 @@
       <%= image_tag @group.get_group_image(300,300) %>
 
       <div class="mt-md-5" style="text-align:left">
-        <p class="admin_show">グループ名：&emsp;<%= @group.name %></p>
+        <p class="admin_show admin_font">グループ名：&emsp;<%= @group.name %></p>
       </div>
 
       <div class="mt-md-3" style="text-align:left">
-        <p class="admin_show">&emsp; 紹 介 文 ：&emsp;<%= @group.introduction %></P>
+        <p class="admin_show admin_font">&emsp; 紹 介 文 ：&emsp;<%= @group.introduction %></P>
       </div>
 
       <div class="mt-md-3" style="text-align:left">
-        <p class="admin_show">メンバー数：&emsp;<%= @group.end_users.count %></p>
+        <p class="admin_show admin_font">メンバー数：&emsp;<%= @group.end_users.count %></p>
       </div>
 
       <div class="mt-md-3" style="text-align:left">
-        <p class="admin_show">&emsp;作成日時：&emsp;<%= @group.created_at.strftime("%Y/%m/%d %T") %></P>
+        <p class="admin_show admin_font">&emsp;作成日時：&emsp;<%= @group.created_at.strftime("%Y/%m/%d %T") %></P>
       </div>
 
       <div class="mt-md-5">
-        <h4 style="text-align:left">メンバー 一覧</h4>
-        <p class="admin_show" style="text-align:left">&emsp;計：<%= @group.end_users.count %>&nbsp;名</p>
+        <h4 class="admin_font" style="text-align:left">メンバー 一覧</h4>
+        <p class="admin_show admin_font" style="text-align:left">&emsp;計：<%= @group.end_users.count %>&nbsp;名</p>
         <ul class="ml-md-3" id="group_member" style="text-align:left">
           <% @group.end_users.each do |member| %>
-            <li id="group_member_list">
+            <li class="admin_font" id="group_member_list">
               <%= image_tag member.get_profile_image(50,50), class: "rounded-circle" %>&nbsp;
               <%= member.nickname %>
             </li>
@@ -41,7 +41,7 @@
 
 
   	<div class="col-md-3">
-  	  <%= link_to "グループ一覧へ", admin_groups_path, class: "btn btn-outline-secondary" %>
+  	  <%= link_to "グループ一覧へ", admin_groups_path, class: "btn btn-outline-secondary admin_font" %>
   	</div>
 
 

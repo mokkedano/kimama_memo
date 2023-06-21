@@ -1,6 +1,7 @@
 @use '~bootstrap/scss/bootstrap';
 @use '~@fortawesome/fontawesome-free/scss/fontawesome';
-@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti&family=New+Tegomin&family=Tsukimi+Rounded&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti&family=New+Tegomin&family=Tsukimi+Rounded&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti&family=Noto+Serif+JP&display=swap');
 
 
 
@@ -45,9 +46,14 @@
 
 
 
-// 全体のフォント
+// 会員側 全体のフォント
 p, h2, h3, h4, h5, li, .form, table, span {
   font-family: 'Kaisei Opti', serif;
+}
+
+// 管理者側 全体のフォント
+.admin_font {
+  font-family: 'Noto Serif JP', serif;
 }
 
 

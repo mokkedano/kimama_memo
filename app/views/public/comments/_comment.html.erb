@@ -13,12 +13,12 @@
       【感情分析スコア: <%= comment.score %>】&emsp;
       <% if comment.score < 0 %>
         <%= link_to "管理者削除", admin_end_user_comment_path(comment.end_user, comment), method: :delete,
-                        remote: true, "data-confirm" => "本当に消しますか？", class: "btn btn-danger btn-sm" %>
+                        remote: true, "data-confirm" => "本当に消しますか？", class: "btn btn-danger btn-sm admin_font" %>
       <% else %>
         <%#= link_to "管理者削除", admin_end_user_comment_path(comment.post, comment), method: :delete,
                         remote: true, "data-confirm" => "本当に消しますか？", class: "btn btn-outline-danger btn-sm" %>
         <%= link_to "管理者削除", admin_end_user_comment_path(comment.end_user, comment), method: :delete,
-                        remote: true, "data-confirm" => "本当に消しますか？", class: "btn btn-outline-danger btn-sm" %>
+                        remote: true, "data-confirm" => "本当に消しますか？", class: "btn btn-outline-danger btn-sm admin_font" %>
       <% end %>
     <% end %>
   </P>

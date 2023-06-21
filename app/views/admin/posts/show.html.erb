@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 style="text-align:left;" class="mt-md-5">メモ詳細・管理画面</h2>
+  <h2 class="mt-md-5 admin_font" style="text-align:left;">メモ詳細・管理画面</h2>
 
 
   <div class="row mt-md-5">
@@ -10,15 +10,15 @@
       <%= image_tag @post.get_image(700,1000) %>
 
       <div class="mt-md-5" style="text-align:left">
-        <p class="admin_show">タイトル：&emsp;<%= @post.title %></p>
+        <p class="admin_show admin_font">タイトル：&emsp;<%= @post.title %></p>
       </div>
 
       <div class="mt-md-3" style="text-align:left">
-        <p class="admin_show">&emsp;本文&emsp;：&emsp;<%= @post.introduction %></P>
+        <p class="admin_show admin_font">&emsp;本文&emsp;：&emsp;<%= @post.introduction %></P>
       </div>
 
       <div class="mt-md-3" style="text-align:left">
-        <p class="admin_show">カテゴリ：&emsp;
+        <p class="admin_show admin_font">カテゴリ：&emsp;
           <% @post.categories.each do |category| %>
           <%#= link_to category.name posts_search_category_path(category_id: category.posts.id) %>
             <%= category.name %>
@@ -27,26 +27,26 @@
       </div>
 
       <div class="mt-md-3" style="text-align:left">
-        <p class="admin_show">登録日時：&emsp;<%= @post.created_at.strftime("%Y/%m/%d %T") %></P>
+        <p class="admin_show admin_font">登録日時：&emsp;<%= @post.created_at.strftime("%Y/%m/%d %T") %></P>
       </div>
 
       <div class="mt-md-3" style="text-align:left">
-        <p class="admin_show">いいね数：&emsp;
+        <p class="admin_show admin_font">いいね数：&emsp;
         <i class="fas fa-heart"></i>&nbsp;<%= @post.favorites.count %></P>
       </div>
 
       <div class="mt-md-3" style="text-align:left">
-        <p class="admin_show">感情分析スコア：&emsp;<%= @post.score %></P>
+        <p class="admin_show admin_font">感情分析スコア：&emsp;<%= @post.score %></P>
       </div>
 
       <div style="text-align:right">
         <%#= link_to "メモを編集する", edit_admin_post_path(@post), class: "btn btn-success" %>
         <% if @post.score < 0 %>
           <%= link_to "メモを削除する", admin_post_path(@post), method: :delete,
-                  "data-confirm" => "本当に消しますか？", class: "btn btn-danger btn-sm form" %>
+                  "data-confirm" => "本当に消しますか？", class: "btn btn-danger btn-sm admin_font" %>
         <% else %>
           <%= link_to "メモを削除する", admin_post_path(@post), method: :delete,
-                    "data-confirm" => "本当に消しますか？", class: "btn btn-outline-danger btn-sm form" %>
+                    "data-confirm" => "本当に消しますか？", class: "btn btn-outline-danger btn-sm admin_font" %>
         <% end %>
       </div>
     </div>
@@ -54,7 +54,7 @@
     <!--ステータスも表示させたい-->
 
     <div class="col-md-2">
-	    <%= link_to "メモ一覧へ", admin_posts_path, class: "btn btn-outline-secondary form" %>
+	    <%= link_to "メモ一覧へ", admin_posts_path, class: "btn btn-outline-secondary admin_font" %>
 	  </div>
 	</div>
 
@@ -64,7 +64,7 @@
 	  <div class="col-md-1"></div>
 
     <div class="col-md-11">
-      <h4 style="text-align:left">コメント一覧</h4>
+      <h4 class="admin_font" style="text-align:left">コメント一覧</h4>
       <!--コメント数 -->
       <div id="comment_count_<%= @post.id %>" style="text-align:left">
         <%= render "public/comments/comment_count", post: @post %>
