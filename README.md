@@ -49,5 +49,5 @@
 【アイコン】
 - フリーペンシル 様：https://iconbu.com/
 
-【ロゴ】
+【ロゴ作成】
 - Canva 様：https://www.canva.com/
